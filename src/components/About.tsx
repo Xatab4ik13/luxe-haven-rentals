@@ -1,6 +1,13 @@
-import { Film, Home, Users, MapPin } from "lucide-react";
-import houseGroup from "@/assets/house-group.jpg";
-import houseEvening from "@/assets/house-evening.jpg";
+import { motion } from "framer-motion";
+import { Film, Home, Users, MapPin, Sparkles } from "lucide-react";
+import dvoretsEvening from "@/assets/dvorets-evening.jpg";
+import dvoretsWinter from "@/assets/dvorets-winter.jpg";
+import dvoretsFront from "@/assets/dvorets-front.jpg";
+import hallMain from "@/assets/hall-main.jpg";
+import hallMarble from "@/assets/hall-marble.jpg";
+import kitchen from "@/assets/kitchen.jpg";
+import livingArea from "@/assets/living-area.jpg";
+import livingRoom from "@/assets/living-room.jpg";
 
 const About = () => {
   const features = [
@@ -26,90 +33,239 @@ const About = () => {
     },
   ];
 
+  const galleryImages = [
+    { src: hallMarble, alt: "Мраморный холл", label: "Парадный холл" },
+    { src: kitchen, alt: "Кухня", label: "Кухня" },
+    { src: livingArea, alt: "Гостиная зона", label: "Гостиная" },
+    { src: livingRoom, alt: "Зона отдыха", label: "Зона отдыха" },
+  ];
+
   return (
-    <section id="about" className="py-24 bg-background">
+    <section id="about" className="py-24 md:py-32 bg-background overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="font-montserrat text-sm text-gold tracking-widest uppercase">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-20"
+        >
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, delay: 0.2 }}
+            className="flex items-center justify-center gap-4 mb-6"
+          >
+            <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent to-gold" />
+            <Sparkles className="w-5 h-5 text-gold" />
+            <div className="w-16 md:w-24 h-px bg-gradient-to-l from-transparent to-gold" />
+          </motion.div>
+          <span className="font-body text-sm text-gold tracking-[0.3em] uppercase">
             Добро пожаловать
           </span>
-          <h2 className="font-playfair text-3xl md:text-5xl text-cream mt-4 mb-6">
-            О нашем <span className="text-gradient-gold">доме</span>
+          <h2 className="font-display text-4xl md:text-6xl text-cream mt-4 mb-6">
+            О нашем <span className="text-gradient-gold">дворце</span>
           </h2>
-          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto" />
-        </div>
+        </motion.div>
 
         {/* Main Content */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
           {/* Images */}
-          <div className="relative">
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="relative"
+          >
             <div className="relative">
-              <img
-                src={houseEvening}
-                alt="Дом вечером"
-                className="w-full h-[400px] object-cover"
+              <motion.img
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.6 }}
+                src={dvoretsEvening}
+                alt="Dvorets Dzzotti вечером"
+                className="w-full h-[450px] object-cover shadow-2xl"
               />
               <div className="absolute inset-0 border border-gold/30" />
+              
+              {/* Floating accent image */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="absolute -bottom-10 -right-10 w-56 h-56 hidden lg:block"
+              >
+                <img
+                  src={dvoretsWinter}
+                  alt="Dvorets зимой"
+                  className="w-full h-full object-cover shadow-xl"
+                />
+                <div className="absolute inset-0 border-2 border-gold" />
+              </motion.div>
+
+              {/* Additional floating image */}
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="absolute -top-8 -left-8 w-40 h-40 hidden lg:block"
+              >
+                <img
+                  src={dvoretsFront}
+                  alt="Dvorets фасад"
+                  className="w-full h-full object-cover shadow-xl"
+                />
+                <div className="absolute inset-0 border border-gold/50" />
+              </motion.div>
             </div>
-            <div className="absolute -bottom-8 -right-8 w-48 h-48 hidden md:block">
-              <img
-                src={houseGroup}
-                alt="Гости дома"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 border border-gold" />
-            </div>
-            {/* Decorative element */}
-            <div className="absolute -top-4 -left-4 w-24 h-24 border border-gold/20" />
-          </div>
+            
+            {/* Decorative corner */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="absolute -top-16 -left-16 w-28 h-28 border border-gold/20"
+            />
+          </motion.div>
 
           {/* Text */}
-          <div className="lg:pl-8">
-            <h3 className="font-playfair text-2xl md:text-3xl text-cream mb-6">
-              Элитный дом с белоснежным фасадом
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:pl-8"
+          >
+            <h3 className="font-display text-2xl md:text-4xl text-cream mb-6">
+              Элитный дворец с белоснежным фасадом
             </h3>
-            <p className="font-montserrat text-muted-foreground leading-relaxed mb-6">
+            <p className="font-body text-muted-foreground leading-relaxed mb-6 text-lg">
               Элитный дом в белом фасаде с белоснежной лестницей — шикарный, красивый, богатый. 
               Ранее не сдавался. Он известен в кино-индустрии: многие сериалы и кино-картины 
               снимались именно в этом доме.
             </p>
-            <p className="font-montserrat text-muted-foreground leading-relaxed mb-8">
+            <p className="font-body text-muted-foreground leading-relaxed mb-10">
               Проведя отдых у нас — вы не пожалеете и будете желать вернуться и повторить! 
               Дом полностью оборудован для проживания: чистое постельное бельё, полотенца, посуда.
             </p>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6">
-              <div className="text-center p-4 border border-gold/20 hover:border-gold transition-colors">
-                <span className="font-playfair text-3xl text-gold">6</span>
-                <p className="font-montserrat text-xs text-muted-foreground mt-1 uppercase tracking-wider">Спален</p>
-              </div>
-              <div className="text-center p-4 border border-gold/20 hover:border-gold transition-colors">
-                <span className="font-playfair text-3xl text-gold">50</span>
-                <p className="font-montserrat text-xs text-muted-foreground mt-1 uppercase tracking-wider">Гостей</p>
-              </div>
-              <div className="text-center p-4 border border-gold/20 hover:border-gold transition-colors">
-                <span className="font-playfair text-3xl text-gold">8</span>
-                <p className="font-montserrat text-xs text-muted-foreground mt-1 uppercase tracking-wider">Машин</p>
-              </div>
+              {[
+                { value: "6", label: "Спален" },
+                { value: "50", label: "Гостей" },
+                { value: "8", label: "Машин" },
+              ].map((stat, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                  whileHover={{ borderColor: "hsl(38 85% 55%)", y: -4 }}
+                  className="text-center p-5 border border-gold/20 transition-all duration-500"
+                >
+                  <span className="font-display text-4xl text-gold">{stat.value}</span>
+                  <p className="font-body text-xs text-muted-foreground mt-2 uppercase tracking-[0.2em]">
+                    {stat.label}
+                  </p>
+                </motion.div>
+              ))}
             </div>
-          </div>
+          </motion.div>
         </div>
+
+        {/* Gallery Grid - 4 images */}
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24"
+        >
+          {galleryImages.map((image, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ scale: 1.03, zIndex: 10 }}
+              className="relative overflow-hidden group cursor-pointer"
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-70" />
+              <div className="absolute inset-0 border border-gold/0 group-hover:border-gold/50 transition-colors duration-500" />
+              <div className="absolute bottom-3 left-3">
+                <span className="font-body text-xs text-gold tracking-[0.2em] uppercase">{image.label}</span>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Banquet Hall Image */}
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="relative mb-24"
+        >
+          <div className="relative overflow-hidden">
+            <motion.img
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.8 }}
+              src={hallMain}
+              alt="Банкетный зал"
+              className="w-full h-[400px] object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+            <div className="absolute inset-0 border border-gold/20" />
+          </div>
+          <div className="absolute bottom-8 left-8 right-8 md:left-12">
+            <span className="font-body text-xs text-gold tracking-[0.3em] uppercase">Банкетный зал</span>
+            <h3 className="font-display text-2xl md:text-3xl text-cream mt-2">
+              Более 100 м² для ваших мероприятий
+            </h3>
+          </div>
+        </motion.div>
 
         {/* Features Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
-            <div
+            <motion.div
               key={index}
-              className="group p-6 bg-card border border-border hover:border-gold transition-all duration-500"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ 
+                y: -8, 
+                borderColor: "hsl(38 85% 55%)",
+                boxShadow: "0 20px 40px -20px hsl(38 85% 55% / 0.3)"
+              }}
+              className="group p-8 bg-card border border-border transition-all duration-500"
             >
-              <feature.icon className="w-10 h-10 text-gold mb-4 group-hover:scale-110 transition-transform duration-300" />
-              <h4 className="font-playfair text-xl text-cream mb-3">{feature.title}</h4>
-              <p className="font-montserrat text-sm text-muted-foreground leading-relaxed">
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <feature.icon className="w-12 h-12 text-gold mb-6" />
+              </motion.div>
+              <h4 className="font-display text-xl text-cream mb-3">{feature.title}</h4>
+              <p className="font-body text-sm text-muted-foreground leading-relaxed">
                 {feature.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
