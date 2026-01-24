@@ -138,7 +138,7 @@ const Contact = () => {
             onClick={() => setIsModalOpen(true)}
             whileHover={{ scale: 1.05, boxShadow: "0 0 40px hsl(38 85% 55% / 0.5)" }}
             whileTap={{ scale: 0.95 }}
-            className="inline-block font-body px-12 py-5 bg-gold text-obsidian font-medium tracking-[0.2em] uppercase transition-all duration-500"
+            className="font-body px-8 md:px-12 py-4 md:py-5 bg-gold text-obsidian font-medium tracking-[0.15em] md:tracking-[0.2em] uppercase transition-all duration-500 text-sm md:text-base whitespace-nowrap"
           >
             Забронировать сейчас
           </motion.button>
