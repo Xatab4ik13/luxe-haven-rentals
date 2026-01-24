@@ -49,17 +49,17 @@ const Rules = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-center mb-20"
         >
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: 0.2 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
             className="flex items-center justify-center gap-4 mb-6"
           >
             <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent to-gold" />
@@ -76,10 +76,10 @@ const Rules = () => {
 
         {/* Image Gallery - 2 images */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           className="grid grid-cols-2 gap-4 mb-16"
         >
           <motion.div
@@ -110,10 +110,10 @@ const Rules = () => {
 
         {/* Age restriction banner */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           whileHover={{ borderColor: "hsl(38 85% 55%)" }}
           className="mb-16 p-8 bg-gold/5 border-2 border-gold flex items-center justify-center gap-4 transition-colors duration-500"
         >
@@ -131,10 +131,10 @@ const Rules = () => {
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           {/* Required */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -15 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
             whileHover={{ borderColor: "hsl(142 76% 36% / 0.5)" }}
             className="p-8 bg-card border border-border transition-colors duration-500"
           >
@@ -163,10 +163,10 @@ const Rules = () => {
 
           {/* Prohibited */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 15 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
             whileHover={{ borderColor: "hsl(0 84% 60% / 0.5)" }}
             className="p-8 bg-card border border-border transition-colors duration-500"
           >
@@ -199,10 +199,10 @@ const Rules = () => {
           {infoCards.map((card, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
               whileHover={{ 
                 borderColor: "hsl(38 85% 55%)", 
                 y: -8,

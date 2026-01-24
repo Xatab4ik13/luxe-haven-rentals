@@ -22,10 +22,10 @@ const Contact = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-center mb-20"
         >
             <motion.div
@@ -56,10 +56,10 @@ const Contact = () => {
         <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-16">
           <motion.a
             href="tel:+79290286136"
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0, ease: [0.25, 0.1, 0.25, 1] }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: 0, ease: [0.25, 0.1, 0.25, 1] }}
             whileHover={{ 
               y: -6, 
               borderColor: "hsl(38 85% 55%)",
@@ -78,10 +78,10 @@ const Contact = () => {
 
           <motion.button
             onClick={() => setIsModalOpen(true)}
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: 0.08, ease: [0.25, 0.1, 0.25, 1] }}
             whileHover={{ 
               y: -6, 
               borderColor: "hsl(38 85% 55%)",
@@ -101,10 +101,10 @@ const Contact = () => {
 
         {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           whileHover={{ borderColor: "hsl(38 85% 55%)" }}
           className="text-center p-6 md:p-12 bg-card border-2 border-gold transition-colors duration-500 flex flex-col items-center"
         >
