@@ -71,8 +71,8 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
           className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-cream mb-4 tracking-[0.05em]"
         >
-          Dvorets{" "}
-          <span className="text-gradient-gold">Dzzotti</span>
+          Дворец{" "}
+          <span className="text-gradient-gold">Дзотти</span>
         </motion.h1>
 
         {/* Description */}

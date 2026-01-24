@@ -36,11 +36,11 @@ const Header = () => {
         <div className="container mx-auto px-4 flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex flex-col items-center group">
-            <span className="font-display text-xl md:text-2xl text-cream tracking-[0.15em] uppercase group-hover:text-gold transition-colors duration-500">
-              Dvorets
+            <span className="font-display text-xl md:text-2xl text-cream tracking-[0.1em] group-hover:text-gold transition-colors duration-500">
+              Дворец
             </span>
-            <span className="font-display text-sm text-gold tracking-[0.2em] -mt-1">
-              Dzzotti
+            <span className="font-display text-sm text-gold tracking-[0.15em] -mt-1">
+              Дзотти
             </span>
           </a>
 

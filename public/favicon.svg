@@ -10,6 +10,6 @@
     </style>
   </defs>
   <rect width="64" height="64" fill="#080808"/>
-  <text x="6" y="46" class="letter" fill="#F5F2EB">D</text>
-  <text x="32" y="46" class="letter" fill="url(#gold)">D</text>
+  <text x="6" y="46" class="letter" fill="#F5F2EB">Д</text>
+  <text x="32" y="46" class="letter" fill="url(#gold)">Д</text>
 </svg>
