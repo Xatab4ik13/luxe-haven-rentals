@@ -39,17 +39,17 @@ const About = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.5 }}
           className="text-center mb-20"
         >
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="flex items-center justify-center gap-4 mb-6"
           >
             <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent to-gold" />
@@ -68,16 +68,16 @@ const About = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
           {/* Images */}
           <motion.div
-            initial={{ opacity: 0, x: -60 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.5 }}
             className="relative"
           >
             <div className="relative">
               <motion.img
                 whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.3 }}
                 src={dvoretsEvening}
                 alt="Dvorets Dzzotti вечером"
                 className="w-full h-[450px] object-cover shadow-2xl"
@@ -86,10 +86,10 @@ const About = () => {
               
               {/* Floating accent image */}
               <motion.div
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                transition={{ duration: 0.4, delay: 0.15 }}
                 className="absolute -bottom-10 -right-10 w-56 h-56 hidden lg:block"
               >
                 <img
@@ -102,10 +102,10 @@ const About = () => {
 
               {/* Additional floating image */}
               <motion.div
-                initial={{ opacity: 0, x: -40 }}
+                initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.6 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
                 className="absolute -top-8 -left-8 w-40 h-40 hidden lg:block"
               >
                 <img
@@ -119,20 +119,20 @@ const About = () => {
             
             {/* Decorative corner */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
               className="absolute -top-16 -left-16 w-28 h-28 border border-gold/20"
             />
           </motion.div>
 
           {/* Text */}
           <motion.div
-            initial={{ opacity: 0, x: 60 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.5 }}
             className="lg:pl-8"
           >
             <h3 className="font-display text-2xl md:text-4xl text-cream mb-6">
@@ -157,12 +157,12 @@ const About = () => {
               ].map((stat, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                  transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
                   whileHover={{ borderColor: "hsl(38 85% 55%)", y: -4 }}
-                  className="text-center p-5 border border-gold/20 transition-all duration-500"
+                  className="text-center p-5 border border-gold/20 transition-all duration-300"
                 >
                   <span className="font-display text-4xl text-gold">{stat.value}</span>
                   <p className="font-body text-xs text-muted-foreground mt-2 uppercase tracking-[0.2em]">
@@ -177,16 +177,16 @@ const About = () => {
 
         {/* Banquet Hall Image */}
         <motion.div
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.5 }}
           className="relative mb-24"
         >
           <div className="relative overflow-hidden">
             <motion.img
               whileHover={{ scale: 1.03 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.4 }}
               src={hallMain}
               alt="Банкетный зал"
               className="w-full h-[400px] object-cover"
@@ -207,20 +207,20 @@ const About = () => {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
               whileHover={{ 
                 y: -8, 
                 borderColor: "hsl(38 85% 55%)",
                 boxShadow: "0 20px 40px -20px hsl(38 85% 55% / 0.3)"
               }}
-              className="group p-8 bg-card border border-border transition-all duration-500"
+              className="group p-8 bg-card border border-border transition-all duration-300"
             >
               <motion.div
                 whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.2 }}
               >
                 <feature.icon className="w-12 h-12 text-gold mb-6" />
               </motion.div>
