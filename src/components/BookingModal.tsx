@@ -147,6 +147,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                       onSelect={setDate}
                       disabled={(date) => date < new Date()}
                       initialFocus
+                      locale={ru}
                       className="p-3 pointer-events-auto"
                     />
                   </PopoverContent>
