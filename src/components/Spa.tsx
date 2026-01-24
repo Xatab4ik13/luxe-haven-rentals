@@ -1,40 +1,40 @@
 import { motion } from "framer-motion";
 import { Droplets, Flame, Waves, Sparkles } from "lucide-react";
 import { useHoverCapable } from "@/hooks/use-hover-capable";
-import sauna from "@/assets/sauna.jpg";
-import saunaNew from "@/assets/sauna-new.jpg";
-import shower from "@/assets/shower.jpg";
-import jacuzzi from "@/assets/jacuzzi.jpg";
-import basement from "@/assets/basement.jpg";
-import bathroomGold from "@/assets/bathroom-gold.jpg";
-import bathroomSpa from "@/assets/bathroom-spa.jpg";
-import pool from "@/assets/pool.jpg";
+import spaPool from "@/assets/spa-pool.jpg";
+import spaJacuzzi from "@/assets/spa-jacuzzi.jpg";
+import spaBanya from "@/assets/spa-banya.jpg";
+import spaHamam from "@/assets/spa-hamam.jpg";
+
+const spaImages = [
+  {
+    src: spaPool,
+    title: "Бассейн",
+    icon: Waves,
+    description: "Тёплый бассейн для плавания и отдыха",
+  },
+  {
+    src: spaJacuzzi,
+    title: "Джакузи",
+    icon: Sparkles,
+    description: "Гидромассаж для расслабления",
+  },
+  {
+    src: spaBanya,
+    title: "Русская Баня",
+    icon: Flame,
+    description: "Традиционная парная с разнообразными вениками",
+  },
+  {
+    src: spaHamam,
+    title: "Турецкий Хамам",
+    icon: Droplets,
+    description: "Паровая комната для глубокого очищения",
+  },
+];
 
 const Spa = () => {
   const isHoverCapable = useHoverCapable();
-  const spaFeatures = [
-    {
-      icon: Droplets,
-      title: "Турецкий Хамам",
-      description: "Паровая комната для глубокого очищения и расслабления",
-    },
-    {
-      icon: Flame,
-      title: "Русская Баня",
-      description: "Традиционная парная с разнообразными вениками",
-    },
-    {
-      icon: Waves,
-      title: "Бассейн",
-      description: "Тёплый бассейн для плавания и отдыха",
-    },
-    {
-      icon: Sparkles,
-      title: "Джакузи",
-      description: "Гидромассаж в мастер-спальне",
-    },
-  ];
-
 
   return (
     <section id="spa" className="py-24 md:py-32 bg-charcoal overflow-hidden">
@@ -68,7 +68,7 @@ const Spa = () => {
 
         {/* Main Content */}
         <div className="grid lg:grid-cols-2 gap-12 items-stretch mb-16">
-          {/* Images Grid */}
+          {/* Images Grid - 4 spa components */}
           <motion.div
             initial={{ opacity: 0, x: -15 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -76,53 +76,24 @@ const Spa = () => {
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
             className="grid grid-cols-2 gap-4"
           >
-            <motion.div 
-              className="col-span-2 relative overflow-hidden group"
-              whileHover={isHoverCapable ? { scale: 1.02 } : undefined}
-            >
-              <img
-                src={pool}
-                alt="Бассейн"
-                className={`w-full h-64 object-cover transition-transform duration-700 ease-out ${isHoverCapable ? "group-hover:scale-105" : ""}`}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-              <div className={`absolute inset-0 border transition-colors duration-500 ${isHoverCapable ? "border-gold/0 group-hover:border-gold/50" : "border-gold/0"}`} />
-              <div className="absolute bottom-4 left-4">
-                <span className="font-display text-xl text-cream">Бассейн</span>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              className="relative overflow-hidden group"
-              whileHover={isHoverCapable ? { scale: 1.05 } : undefined}
-            >
-              <img
-                src={sauna}
-                alt="Сауна"
-                className={`w-full h-48 object-cover transition-transform duration-700 ease-out ${isHoverCapable ? "group-hover:scale-105" : ""}`}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-              <div className={`absolute inset-0 border transition-colors duration-500 ${isHoverCapable ? "border-gold/0 group-hover:border-gold/50" : "border-gold/0"}`} />
-              <div className="absolute bottom-3 left-3">
-                <span className="font-display text-lg text-cream">Русская баня</span>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              className="relative overflow-hidden group"
-              whileHover={isHoverCapable ? { scale: 1.05 } : undefined}
-            >
-              <img
-                src={shower}
-                alt="Душевая"
-                className={`w-full h-48 object-cover transition-transform duration-700 ease-out ${isHoverCapable ? "group-hover:scale-105" : ""}`}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-              <div className={`absolute inset-0 border transition-colors duration-500 ${isHoverCapable ? "border-gold/0 group-hover:border-gold/50" : "border-gold/0"}`} />
-              <div className="absolute bottom-3 left-3">
-                <span className="font-display text-lg text-cream">Душевая</span>
-              </div>
-            </motion.div>
+            {spaImages.map((item, index) => (
+              <motion.div 
+                key={index}
+                className="relative overflow-hidden group aspect-square"
+                whileHover={isHoverCapable ? { scale: 1.02 } : undefined}
+              >
+                <img
+                  src={item.src}
+                  alt={item.title}
+                  className={`w-full h-full object-cover transition-transform duration-700 ease-out ${isHoverCapable ? "group-hover:scale-110" : ""}`}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+                <div className={`absolute inset-0 border transition-colors duration-500 ${isHoverCapable ? "border-gold/0 group-hover:border-gold/50" : "border-gold/0"}`} />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <span className="font-display text-lg text-cream">{item.title}</span>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
 
           {/* Info */}
@@ -153,7 +124,7 @@ const Spa = () => {
               transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
               className="grid grid-cols-2 gap-4"
             >
-              {spaFeatures.map((feature, index) => (
+              {spaImages.map((feature, index) => (
                 <div
                   key={index}
                   className="flex items-start gap-3 p-4 border border-border"
