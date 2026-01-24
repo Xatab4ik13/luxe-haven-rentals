@@ -1,64 +1,12 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, Camera } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { useHoverCapable } from "@/hooks/use-hover-capable";
 
-// Import all gallery images
-import dvoretsEvening from "@/assets/dvorets-evening.jpg";
-import dvoretsWinter from "@/assets/dvorets-winter.jpg";
-import dvoretsFront from "@/assets/dvorets-front.jpg";
-import facadeBack from "@/assets/facade-back.jpg";
-import facadeFront from "@/assets/facade-front.jpg";
-import facadeHero from "@/assets/facade-hero.jpg";
-import facadeNight from "@/assets/facade-night.jpg";
-import hallMain from "@/assets/hall-main.jpg";
-import hallMarble from "@/assets/hall-marble.jpg";
-import kitchen from "@/assets/kitchen.jpg";
-import livingArea from "@/assets/living-area.jpg";
-import livingRoom from "@/assets/living-room.jpg";
-import masterBedroom from "@/assets/master-bedroom.jpg";
-import bedroomVelvet from "@/assets/bedroom-velvet.jpg";
-import bedroomBalcony from "@/assets/bedroom-balcony.jpg";
-import bedroomArched from "@/assets/bedroom-arched.jpg";
-import bedroomBlue from "@/assets/bedroom-blue.jpg";
-import bedroomTwin from "@/assets/bedroom-twin.jpg";
-import bathroomGold from "@/assets/bathroom-gold.jpg";
-import bathroomSpa from "@/assets/bathroom-spa.jpg";
-import jacuzzi from "@/assets/jacuzzi.jpg";
-import sauna from "@/assets/sauna.jpg";
-import pool from "@/assets/pool.jpg";
-import houseChristmas from "@/assets/house-christmas.jpg";
-import houseEvening from "@/assets/house-evening.jpg";
-import houseMain from "@/assets/house-main.jpg";
-
-const galleryImages = [
-  { src: facadeHero, alt: "Фасад дворца" },
-  { src: dvoretsEvening, alt: "Дворец вечером" },
-  { src: hallMain, alt: "Главный зал" },
-  { src: livingRoom, alt: "Гостиная" },
-  { src: masterBedroom, alt: "Мастер-спальня" },
-  { src: kitchen, alt: "Кухня" },
-  { src: pool, alt: "Бассейн" },
-  { src: dvoretsWinter, alt: "Дворец зимой" },
-  { src: hallMarble, alt: "Мраморный холл" },
-  { src: bedroomVelvet, alt: "Бархатная спальня" },
-  { src: livingArea, alt: "Зона отдыха" },
-  { src: sauna, alt: "Сауна" },
-  { src: facadeFront, alt: "Фасад" },
-  { src: bedroomBalcony, alt: "Спальня с террасой" },
-  { src: bathroomGold, alt: "Золотая ванная" },
-  { src: jacuzzi, alt: "Джакузи" },
-  { src: houseEvening, alt: "Дом вечером" },
-  { src: bedroomArched, alt: "Арочная спальня" },
-  { src: bathroomSpa, alt: "СПА ванная" },
-  { src: dvoretsFront, alt: "Фасад дворца" },
-  { src: bedroomBlue, alt: "Голубая спальня" },
-  { src: facadeBack, alt: "Вид сзади" },
-  { src: bedroomTwin, alt: "Двухместная спальня" },
-  { src: houseChristmas, alt: "Новогодний дом" },
-  { src: facadeNight, alt: "Фасад ночью" },
-  { src: houseMain, alt: "Главный вид" },
+// Gallery images - add your photos here
+const galleryImages: string[] = [
+  // Photos will be added here
 ];
 
 const Gallery = () => {
@@ -73,7 +21,7 @@ const Gallery = () => {
 
   // Auto-scroll effect
   useEffect(() => {
-    if (!emblaApi || isHovered) return;
+    if (!emblaApi || isHovered || galleryImages.length === 0) return;
     
     const interval = setInterval(() => {
       emblaApi.scrollNext();
@@ -125,6 +73,11 @@ const Gallery = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selectedIndex]);
 
+  // Don't render if no images
+  if (galleryImages.length === 0) {
+    return null;
+  }
+
   return (
     <section id="gallery" className="py-24 md:py-32 bg-background overflow-hidden">
       <div className="container mx-auto px-4 mb-12">
@@ -147,9 +100,6 @@ const Gallery = () => {
             <Camera className="w-5 h-5 text-gold" />
             <div className="w-16 md:w-24 h-px bg-gradient-to-l from-transparent to-gold" />
           </motion.div>
-          <span className="font-body text-sm text-gold tracking-[0.3em] uppercase">
-            Фотографии интерьера
-          </span>
           <h2 className="font-display text-4xl md:text-6xl text-cream mt-4 mb-6">
             Галерея <span className="text-gradient-gold">дворца</span>
           </h2>
@@ -178,7 +128,7 @@ const Gallery = () => {
 
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex gap-4">
-            {galleryImages.map((image, index) => (
+            {galleryImages.map((src, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0 }}
@@ -190,25 +140,12 @@ const Gallery = () => {
               >
                 <div className="relative overflow-hidden aspect-[4/3]">
                   <img
-                    src={image.src}
-                    alt={image.alt}
+                    src={src}
+                    alt=""
                     className={`w-full h-full object-cover transition-transform duration-700 ease-out ${isHoverCapable ? "group-hover:scale-110" : ""}`}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian/40 via-transparent to-transparent" />
                   <div className={`absolute inset-0 border transition-colors duration-500 ${isHoverCapable ? "border-gold/0 group-hover:border-gold" : "border-gold/0"}`} />
-                  
-                  {/* Hover overlay */}
-                  {isHoverCapable && (
-                    <div className="absolute inset-0 bg-gold/0 group-hover:bg-gold/10 transition-colors duration-300 flex items-center justify-center">
-                      <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-body text-sm text-cream tracking-wider">
-                        Открыть
-                      </span>
-                    </div>
-                  )}
-                  
-                  <div className="absolute bottom-4 left-4">
-                    <span className="font-body text-xs text-gold tracking-[0.15em] uppercase">{image.alt}</span>
-                  </div>
                 </div>
               </motion.div>
             ))}
@@ -268,15 +205,12 @@ const Gallery = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
-                  src={galleryImages[selectedIndex].src}
-                  alt={galleryImages[selectedIndex].alt}
+                  src={galleryImages[selectedIndex]}
+                  alt=""
                   className="max-w-full max-h-[85vh] object-contain"
                 />
                 <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 text-center">
-                  <span className="font-body text-sm text-gold tracking-wider">
-                    {galleryImages[selectedIndex].alt}
-                  </span>
-                  <span className="font-body text-xs text-muted-foreground ml-4">
+                  <span className="font-body text-xs text-muted-foreground">
                     {selectedIndex + 1} / {galleryImages.length}
                   </span>
                 </div>
