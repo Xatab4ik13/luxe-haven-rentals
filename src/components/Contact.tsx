@@ -22,17 +22,17 @@ const Contact = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-center mb-20"
         >
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
             className="flex items-center justify-center gap-4 mb-6"
           >
             <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent to-gold" />
@@ -56,16 +56,16 @@ const Contact = () => {
         <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-16">
           <motion.a
             href="tel:+79290286136"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0 }}
+            transition={{ duration: 0.7, delay: 0, ease: [0.25, 0.1, 0.25, 1] }}
             whileHover={{ 
-              y: -8, 
+              y: -6, 
               borderColor: "hsl(38 85% 55%)",
               boxShadow: "0 20px 40px -20px hsl(38 85% 55% / 0.3)"
             }}
-            className="group p-8 bg-card border border-border text-center transition-all duration-300"
+            className="group p-8 bg-card border border-border text-center transition-all duration-500"
           >
             <motion.div whileHover={{ scale: 1.1, rotate: 5 }}>
               <Phone className="w-12 h-12 text-gold mx-auto mb-4" />
@@ -78,16 +78,16 @@ const Contact = () => {
 
           <motion.button
             onClick={() => setIsModalOpen(true)}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.05 }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
             whileHover={{ 
-              y: -8, 
+              y: -6, 
               borderColor: "hsl(38 85% 55%)",
               boxShadow: "0 20px 40px -20px hsl(38 85% 55% / 0.3)"
             }}
-            className="group p-8 bg-card border border-border text-center transition-all duration-300"
+            className="group p-8 bg-card border border-border text-center transition-all duration-500"
           >
             <motion.div whileHover={{ scale: 1.1, rotate: 5 }}>
               <Send className="w-12 h-12 text-gold mx-auto mb-4" />
@@ -101,27 +101,27 @@ const Contact = () => {
 
         {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           whileHover={{ borderColor: "hsl(38 85% 55%)" }}
-          className="text-center p-6 md:p-12 bg-card border-2 border-gold transition-colors duration-300 flex flex-col items-center"
+          className="text-center p-6 md:p-12 bg-card border-2 border-gold transition-colors duration-500 flex flex-col items-center"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.3, delay: 0.1 }}
-            className="flex justify-center gap-1 mb-6"
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+              className="flex justify-center gap-1 mb-6"
           >
             {[...Array(5)].map((_, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 5 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.2, delay: 0.15 + i * 0.05 }}
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 5 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.3 + i * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
               >
                 <Star className="w-6 h-6 text-gold" fill="currentColor" />
               </motion.div>

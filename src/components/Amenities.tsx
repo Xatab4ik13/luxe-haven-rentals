@@ -74,17 +74,17 @@ const Amenities = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-center mb-20"
         >
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
             className="flex items-center justify-center gap-4 mb-6"
           >
             <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent to-gold" />
@@ -103,16 +103,16 @@ const Amenities = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
           {/* Image */}
           <motion.div
-            initial={{ opacity: 0, x: -25 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="relative order-2 lg:order-1"
           >
             <div className="relative overflow-hidden">
               <motion.img
-                whileHover={{ scale: 1.03 }}
-                transition={{ duration: 0.3 }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
                 src={livingRoom}
                 alt="Гостиная"
                 className="w-full h-[500px] object-cover"
@@ -121,27 +121,27 @@ const Amenities = () => {
             </div>
             {/* Decorative elements */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: 0.1 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
               className="absolute -bottom-4 -right-4 w-32 h-32 border border-gold/20 hidden md:block"
             />
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: 0.15 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
               className="absolute -top-4 -left-4 w-16 h-16 border border-gold hidden md:block"
             />
           </motion.div>
 
           {/* Amenities Grid */}
           <motion.div
-            initial={{ opacity: 0, x: 25 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="order-1 lg:order-2"
           >
             <p className="font-body text-muted-foreground leading-relaxed mb-8">
@@ -155,16 +155,16 @@ const Amenities = () => {
               {amenities.map((amenity, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 15 }}
+                  initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: index * 0.03 }}
+                  transition={{ duration: 0.6, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
                   whileHover={{ 
                     borderColor: "hsl(38 85% 55%)", 
                     y: -4,
                     boxShadow: "0 10px 30px -10px hsl(38 85% 55% / 0.2)"
                   }}
-                  className="group flex items-start gap-3 p-4 bg-card border border-border transition-all duration-300"
+                  className="group flex items-start gap-3 p-4 bg-card border border-border transition-all duration-500"
                 >
                   <motion.div 
                     className="p-2 bg-gold/10 group-hover:bg-gold/20 transition-colors"
@@ -188,10 +188,10 @@ const Amenities = () => {
 
         {/* Gallery Grid - 5 images masonry style */}
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-20"
         >
           {galleryImages.map((image, index) => (
@@ -200,8 +200,8 @@ const Amenities = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
-              whileHover={{ scale: 1.03, zIndex: 10 }}
+              transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+              whileHover={{ scale: 1.02, zIndex: 10 }}
               className={`relative overflow-hidden group cursor-pointer ${
                 index === 0 ? "md:col-span-2 md:row-span-2" : ""
               }`}
@@ -209,12 +209,12 @@ const Amenities = () => {
               <img
                 src={image.src}
                 alt={image.alt}
-                className={`w-full object-cover group-hover:scale-110 transition-transform duration-500 ${
+                className={`w-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out ${
                   index === 0 ? "h-64 md:h-full" : "h-48 md:h-56"
                 }`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-70" />
-              <div className="absolute inset-0 border border-gold/0 group-hover:border-gold transition-colors duration-300" />
+              <div className="absolute inset-0 border border-gold/0 group-hover:border-gold transition-colors duration-500" />
               <div className="absolute bottom-3 left-3">
                 <span className="font-body text-xs text-gold tracking-[0.2em] uppercase">{image.label}</span>
               </div>
@@ -224,10 +224,10 @@ const Amenities = () => {
 
         {/* Quote */}
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-center max-w-3xl mx-auto"
         >
           <blockquote className="font-display text-xl md:text-2xl text-cream italic">
@@ -238,7 +238,7 @@ const Amenities = () => {
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
             className="w-16 h-[1px] bg-gold mx-auto mt-8"
           />
         </motion.div>
