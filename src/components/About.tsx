@@ -33,12 +33,6 @@ const About = () => {
     },
   ];
 
-  const galleryImages = [
-    { src: hallMarble, alt: "Мраморный холл", label: "Парадный холл" },
-    { src: kitchen, alt: "Кухня", label: "Кухня" },
-    { src: livingArea, alt: "Гостиная зона", label: "Гостиная" },
-    { src: livingRoom, alt: "Зона отдыха", label: "Зона отдыха" },
-  ];
 
   return (
     <section id="about" className="py-24 md:py-32 bg-background overflow-hidden">
@@ -180,37 +174,6 @@ const About = () => {
           </motion.div>
         </div>
 
-        {/* Gallery Grid - 4 images */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24"
-        >
-          {galleryImages.map((image, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.03, zIndex: 10 }}
-              className="relative overflow-hidden group cursor-pointer"
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-70" />
-              <div className="absolute inset-0 border border-gold/0 group-hover:border-gold/50 transition-colors duration-500" />
-              <div className="absolute bottom-3 left-3">
-                <span className="font-body text-xs text-gold tracking-[0.2em] uppercase">{image.label}</span>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
 
         {/* Banquet Hall Image */}
         <motion.div
