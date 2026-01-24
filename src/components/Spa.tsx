@@ -32,12 +32,6 @@ const Spa = () => {
     },
   ];
 
-  const spaGallery = [
-    { src: saunaNew, alt: "Новая сауна", label: "Сауна" },
-    { src: jacuzzi, alt: "Джакузи", label: "Джакузи" },
-    { src: bathroomGold, alt: "Золотая ванная", label: "Ванная" },
-    { src: bathroomSpa, alt: "СПА ванная", label: "СПА" },
-  ];
 
   return (
     <section id="spa" className="py-24 md:py-32 bg-charcoal overflow-hidden">
@@ -173,37 +167,6 @@ const Spa = () => {
           </motion.div>
         </div>
 
-        {/* SPA Gallery - 4 images */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
-        >
-          {spaGallery.map((image, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.05, zIndex: 10 }}
-              className="relative overflow-hidden group cursor-pointer"
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-40 md:h-48 object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-70" />
-              <div className="absolute inset-0 border border-gold/0 group-hover:border-gold transition-colors duration-500" />
-              <div className="absolute bottom-3 left-3">
-                <span className="font-body text-xs text-gold tracking-[0.2em] uppercase">{image.label}</span>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
 
         {/* Additional Info Banner */}
         <motion.div
