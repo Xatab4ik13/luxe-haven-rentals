@@ -149,28 +149,29 @@ const About = () => {
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+              className="grid grid-cols-3 gap-6"
+            >
               {[
                 { value: "6", label: "Спален" },
                 { value: "50", label: "Гостей" },
                 { value: "8", label: "Машин" },
               ].map((stat, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 + index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-                  whileHover={{ borderColor: "hsl(38 85% 55%)", y: -4 }}
-                  className="text-center p-5 border border-gold/20 transition-all duration-500"
+                  className="text-center p-5 border border-gold/20"
                 >
                   <span className="font-display text-4xl text-gold">{stat.value}</span>
                   <p className="font-body text-xs text-muted-foreground mt-2 uppercase tracking-[0.2em]">
                     {stat.label}
                   </p>
-                </motion.div>
+                </div>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         </div>
 
@@ -203,34 +204,26 @@ const About = () => {
         </motion.div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
           {features.map((feature, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
-              whileHover={{ 
-                y: -8, 
-                borderColor: "hsl(38 85% 55%)",
-                boxShadow: "0 20px 40px -20px hsl(38 85% 55% / 0.3)"
-              }}
-              className="group p-8 bg-card border border-border transition-all duration-500"
+              className="p-8 bg-card border border-border"
             >
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-              >
-                <feature.icon className="w-12 h-12 text-gold mb-6" />
-              </motion.div>
+              <feature.icon className="w-12 h-12 text-gold mb-6" />
               <h4 className="font-display text-xl text-cream mb-3">{feature.title}</h4>
               <p className="font-body text-sm text-muted-foreground leading-relaxed">
                 {feature.description}
               </p>
-            </motion.div>
+            </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

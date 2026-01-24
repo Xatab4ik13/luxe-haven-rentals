@@ -145,16 +145,17 @@ const Spa = () => {
             </p>
 
             {/* SPA Features */}
-            <div className="grid grid-cols-2 gap-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+              className="grid grid-cols-2 gap-4"
+            >
               {spaFeatures.map((feature, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
-                  whileHover={isHoverCapable ? { borderColor: "hsl(38 85% 55%)", y: -4 } : undefined}
-                  className="flex items-start gap-3 p-4 border border-border transition-all duration-500"
+                  className="flex items-start gap-3 p-4 border border-border"
                 >
                   <feature.icon className="w-6 h-6 text-gold flex-shrink-0" />
                   <div>
@@ -163,9 +164,9 @@ const Spa = () => {
                       {feature.description}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         </div>
 

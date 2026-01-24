@@ -92,9 +92,9 @@ const Hero = () => {
 
         {/* Features */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           className="flex flex-wrap justify-center gap-8 md:gap-12 mb-14"
         >
           {[
@@ -102,16 +102,13 @@ const Hero = () => {
             { icon: MapPin, text: "30 мин от Москвы" },
             { icon: Star, text: "Премиум класс" },
           ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.7 + index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-              className="flex items-center gap-3 text-cream/60 group"
+            <div
+              key={index}
+              className="flex items-center gap-3 text-cream/60"
             >
-              <item.icon className={`w-5 h-5 text-gold transition-transform duration-200 ${isHoverCapable ? "group-hover:scale-110" : ""}`} />
+              <item.icon className="w-5 h-5 text-gold" />
               <span className="font-body text-sm tracking-wide">{item.text}</span>
-            </motion.div>
+            </div>
           ))}
         </motion.div>
 
