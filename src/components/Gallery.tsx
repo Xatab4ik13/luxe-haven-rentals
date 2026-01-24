@@ -4,9 +4,29 @@ import { X, ChevronLeft, ChevronRight, Camera } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { useHoverCapable } from "@/hooks/use-hover-capable";
 
-// Gallery images - add your photos here
+// Import gallery images
+import gallery01 from "@/assets/gallery/gallery-01.jpg";
+import gallery02 from "@/assets/gallery/gallery-02.jpg";
+import gallery03 from "@/assets/gallery/gallery-03.jpg";
+import gallery04 from "@/assets/gallery/gallery-04.jpg";
+import gallery05 from "@/assets/gallery/gallery-05.jpg";
+import gallery06 from "@/assets/gallery/gallery-06.jpg";
+import gallery07 from "@/assets/gallery/gallery-07.jpg";
+import gallery08 from "@/assets/gallery/gallery-08.jpg";
+import gallery09 from "@/assets/gallery/gallery-09.jpg";
+import gallery10 from "@/assets/gallery/gallery-10.jpg";
+
 const galleryImages: string[] = [
-  // Photos will be added here
+  gallery01,
+  gallery02,
+  gallery03,
+  gallery04,
+  gallery05,
+  gallery06,
+  gallery07,
+  gallery08,
+  gallery09,
+  gallery10,
 ];
 
 const Gallery = () => {
