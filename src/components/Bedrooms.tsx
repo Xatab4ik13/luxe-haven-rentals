@@ -16,32 +16,26 @@ const Bedrooms = () => {
     {
       image: masterBedroom,
       title: "Мастер-спальня",
-      features: ["Джакузи", "Балкон", "King-size"],
     },
     {
       image: bedroomVelvet,
       title: "Бархатная спальня",
-      features: ["Балкон", "Премиум", "King-size"],
     },
     {
       image: bedroomBalcony,
       title: "Спальня с террасой",
-      features: ["Терраса", "Вид на лес", "King-size"],
     },
     {
       image: bedroomArched,
       title: "Арочная спальня",
-      features: ["Арочные окна", "Свет", "Queen-size"],
     },
     {
       image: bedroomBlue,
       title: "Голубая спальня",
-      features: ["Уютная", "2 кровати", "Балкон"],
     },
     {
       image: bedroomTwin,
       title: "Двухместная спальня",
-      features: ["2 кровати", "Просторная", "Балкон"],
     },
   ];
 
@@ -132,17 +126,7 @@ const Bedrooms = () => {
                   <Sparkles className="w-10 h-10 text-gold" />
                 </motion.div>
               </motion.div>
-              <h3 className="font-display text-xl text-cream mb-4">{bedroom.title}</h3>
-              <div className="flex flex-wrap gap-2">
-                {bedroom.features.map((feature, idx) => (
-                  <span
-                    key={idx}
-                    className="px-3 py-1 text-xs font-body text-gold border border-gold/30 uppercase tracking-wider hover:bg-gold/10 transition-colors"
-                  >
-                    {feature}
-                  </span>
-                ))}
-              </div>
+              <h3 className="font-display text-xl text-cream">{bedroom.title}</h3>
             </motion.div>
           ))}
         </div>
