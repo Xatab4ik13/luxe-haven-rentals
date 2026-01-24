@@ -54,51 +54,35 @@ const Contact = () => {
 
 
         {/* Contact Cards - Only 2 now */}
-        <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-16">
-          <motion.a
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+          className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-16"
+        >
+          <a
             href="tel:+79290286136"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: 0, ease: [0.25, 0.1, 0.25, 1] }}
-            whileHover={isHoverCapable ? { 
-              y: -6, 
-              borderColor: "hsl(38 85% 55%)",
-              boxShadow: "0 20px 40px -20px hsl(38 85% 55% / 0.3)"
-            } : undefined}
-            className="group p-8 bg-card border border-border text-center transition-all duration-500"
+            className="p-8 bg-card border border-border text-center"
           >
-            <motion.div whileHover={isHoverCapable ? { scale: 1.1, rotate: 5 } : undefined}>
-              <Phone className="w-12 h-12 text-gold mx-auto mb-4" />
-            </motion.div>
+            <Phone className="w-12 h-12 text-gold mx-auto mb-4" />
             <h4 className="font-display text-xl text-cream mb-2">Телефон</h4>
             <p className="font-body text-sm text-muted-foreground">
               Позвоните нам напрямую
             </p>
-          </motion.a>
+          </a>
 
-          <motion.button
+          <button
             onClick={() => setIsModalOpen(true)}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: 0.08, ease: [0.25, 0.1, 0.25, 1] }}
-            whileHover={isHoverCapable ? { 
-              y: -6, 
-              borderColor: "hsl(38 85% 55%)",
-              boxShadow: "0 20px 40px -20px hsl(38 85% 55% / 0.3)"
-            } : undefined}
-            className="group p-8 bg-card border border-border text-center transition-all duration-500"
+            className="p-8 bg-card border border-border text-center"
           >
-            <motion.div whileHover={isHoverCapable ? { scale: 1.1, rotate: 5 } : undefined}>
-              <Send className="w-12 h-12 text-gold mx-auto mb-4" />
-            </motion.div>
+            <Send className="w-12 h-12 text-gold mx-auto mb-4" />
             <h4 className="font-display text-xl text-cream mb-2">Заявка</h4>
             <p className="font-body text-sm text-muted-foreground">
               Оставьте заявку через Telegram
             </p>
-          </motion.button>
-        </div>
+          </button>
+        </motion.div>
 
         {/* CTA */}
         <motion.div
