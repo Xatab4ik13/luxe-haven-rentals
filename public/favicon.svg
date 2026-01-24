@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4A843"/>
+      <stop offset="100%" style="stop-color:#E8C875"/>
+    </linearGradient>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&amp;display=swap');
+      .letter { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 600; }
+    </style>
+  </defs>
+  <rect width="64" height="64" fill="#080808"/>
+  <text x="6" y="46" class="letter" fill="#F5F2EB">D</text>
+  <text x="32" y="46" class="letter" fill="url(#gold)">D</text>
+</svg>
