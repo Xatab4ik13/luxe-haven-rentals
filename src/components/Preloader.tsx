@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import facadeHero from "@/assets/facade-hero.jpg";
-
+import dvoretsEvening from "@/assets/dvorets-evening.jpg";
 const Preloader = ({ onComplete }: { onComplete: () => void }) => {
   const [progress, setProgress] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
@@ -39,9 +38,9 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
             className="absolute inset-0"
           >
             <img
-              src={facadeHero}
-              alt="Zamok Dzotti"
-              className="w-full h-full object-cover opacity-25"
+              src={dvoretsEvening}
+              alt="Dvorets Dzzotti"
+              className="w-full h-full object-cover opacity-30"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-obsidian via-obsidian/70 to-obsidian" />
             <div className="absolute inset-0 bg-gradient-to-r from-obsidian/60 via-transparent to-obsidian/60" />
@@ -87,7 +86,7 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
               className="text-center"
             >
               <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-cream tracking-[0.12em] uppercase font-light">
-                Zamok
+                Dvorets
               </h1>
               <motion.div
                 initial={{ opacity: 0, y: 20, letterSpacing: "0.5em" }}
@@ -95,7 +94,7 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
                 transition={{ duration: 1.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 className="font-display text-3xl md:text-5xl lg:text-6xl text-gradient-gold mt-1 md:mt-2 font-normal"
               >
-                Dzotti
+                Dzzotti
               </motion.div>
             </motion.div>
 
