@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, MessageCircle, MapPin, Clock, Star, Sparkles } from "lucide-react";
+import { Phone, Send, Star, Sparkles } from "lucide-react";
 import houseChristmas from "@/assets/house-christmas.jpg";
+import BookingModal from "./BookingModal";
 
 const Contact = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <section id="contact" className="py-24 md:py-32 bg-charcoal relative overflow-hidden">
@@ -49,8 +52,8 @@ const Contact = () => {
         </motion.div>
 
 
-        {/* Contact Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        {/* Contact Cards - Only 2 now */}
+        <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-16">
           <motion.a
             href="tel:+79001234567"
             initial={{ opacity: 0, y: 30 }}
@@ -69,14 +72,12 @@ const Contact = () => {
             </motion.div>
             <h4 className="font-display text-xl text-cream mb-2">Телефон</h4>
             <p className="font-body text-sm text-muted-foreground">
-              Позвоните нам
+              Позвоните нам напрямую
             </p>
           </motion.a>
 
-          <motion.a
-            href="https://wa.me/79001234567"
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.button
+            onClick={() => setIsModalOpen(true)}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -89,51 +90,13 @@ const Contact = () => {
             className="group p-8 bg-card border border-border text-center transition-all duration-500"
           >
             <motion.div whileHover={{ scale: 1.1, rotate: 5 }}>
-              <MessageCircle className="w-12 h-12 text-gold mx-auto mb-4" />
+              <Send className="w-12 h-12 text-gold mx-auto mb-4" />
             </motion.div>
-            <h4 className="font-display text-xl text-cream mb-2">WhatsApp</h4>
+            <h4 className="font-display text-xl text-cream mb-2">Заявка</h4>
             <p className="font-body text-sm text-muted-foreground">
-              Напишите в мессенджер
+              Оставьте заявку через Telegram
             </p>
-          </motion.a>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            whileHover={{ 
-              y: -8, 
-              borderColor: "hsl(38 85% 55%)",
-              boxShadow: "0 20px 40px -20px hsl(38 85% 55% / 0.3)"
-            }}
-            className="p-8 bg-card border border-border text-center transition-all duration-500"
-          >
-            <MapPin className="w-12 h-12 text-gold mx-auto mb-4" />
-            <h4 className="font-display text-xl text-cream mb-2">Локация</h4>
-            <p className="font-body text-sm text-muted-foreground">
-              30 мин от Москвы, выезд на ЦКАД
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            whileHover={{ 
-              y: -8, 
-              borderColor: "hsl(38 85% 55%)",
-              boxShadow: "0 20px 40px -20px hsl(38 85% 55% / 0.3)"
-            }}
-            className="p-8 bg-card border border-border text-center transition-all duration-500"
-          >
-            <Clock className="w-12 h-12 text-gold mx-auto mb-4" />
-            <h4 className="font-display text-xl text-cream mb-2">Доступность</h4>
-            <p className="font-body text-sm text-muted-foreground">
-              Бронирование 24/7
-            </p>
-          </motion.div>
+          </motion.button>
         </div>
 
         {/* CTA */}
@@ -171,18 +134,19 @@ const Contact = () => {
             Мы сделаем всё, чтобы ваш отдых был незабываемым и вы снова приехали к нам. 
             Ждём вас в гости!
           </p>
-          <motion.a
-            href="https://wa.me/79001234567"
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.button
+            onClick={() => setIsModalOpen(true)}
             whileHover={{ scale: 1.05, boxShadow: "0 0 40px hsl(38 85% 55% / 0.5)" }}
             whileTap={{ scale: 0.95 }}
             className="inline-block font-body px-12 py-5 bg-gold text-obsidian font-medium tracking-[0.2em] uppercase transition-all duration-500"
           >
             Забронировать сейчас
-          </motion.a>
+          </motion.button>
         </motion.div>
       </div>
+
+      {/* Booking Modal */}
+      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };
