@@ -10,6 +10,7 @@ import {
   Gamepad2,
   Sparkles,
 } from "lucide-react";
+import { useHoverCapable } from "@/hooks/use-hover-capable";
 import livingRoom from "@/assets/living-room.jpg";
 import livingArea from "@/assets/living-area.jpg";
 import kitchen from "@/assets/kitchen.jpg";
@@ -18,6 +19,7 @@ import houseGroup from "@/assets/house-group.jpg";
 import houseMain from "@/assets/house-main.jpg";
 
 const Amenities = () => {
+  const isHoverCapable = useHoverCapable();
   const amenities = [
     {
       icon: Music,
@@ -111,7 +113,7 @@ const Amenities = () => {
           >
             <div className="relative overflow-hidden">
               <motion.img
-                whileHover={{ scale: 1.02 }}
+                whileHover={isHoverCapable ? { scale: 1.02 } : undefined}
                 transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
                 src={livingRoom}
                 alt="Гостиная"
@@ -159,16 +161,16 @@ const Amenities = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.5, delay: index * 0.05, ease: [0.25, 0.1, 0.25, 1] }}
-                  whileHover={{ 
+                  whileHover={isHoverCapable ? { 
                     borderColor: "hsl(38 85% 55%)", 
                     y: -4,
                     boxShadow: "0 10px 30px -10px hsl(38 85% 55% / 0.2)"
-                  }}
+                  } : undefined}
                   className="group flex items-start gap-3 p-4 bg-card border border-border transition-all duration-500"
                 >
                   <motion.div 
-                    className="p-2 bg-gold/10 group-hover:bg-gold/20 transition-colors"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className={`p-2 bg-gold/10 transition-colors ${isHoverCapable ? "group-hover:bg-gold/20" : ""}`}
+                    whileHover={isHoverCapable ? { scale: 1.1, rotate: 5 } : undefined}
                   >
                     <amenity.icon className="w-5 h-5 text-gold" />
                   </motion.div>
@@ -201,7 +203,7 @@ const Amenities = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.06, ease: [0.25, 0.1, 0.25, 1] }}
-              whileHover={{ scale: 1.02, zIndex: 10 }}
+              whileHover={isHoverCapable ? { scale: 1.02, zIndex: 10 } : undefined}
               className={`relative overflow-hidden group cursor-pointer ${
                 index === 0 ? "md:col-span-2 md:row-span-2" : ""
               }`}
@@ -209,12 +211,12 @@ const Amenities = () => {
               <img
                 src={image.src}
                 alt={image.alt}
-                className={`w-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out ${
+                className={`w-full object-cover transition-transform duration-700 ease-out ${isHoverCapable ? "group-hover:scale-105" : ""} ${
                   index === 0 ? "h-64 md:h-full" : "h-48 md:h-56"
                 }`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-70" />
-              <div className="absolute inset-0 border border-gold/0 group-hover:border-gold transition-colors duration-500" />
+              <div className={`absolute inset-0 border transition-colors duration-500 ${isHoverCapable ? "border-gold/0 group-hover:border-gold" : "border-gold/0"}`} />
               <div className="absolute bottom-3 left-3">
                 <span className="font-body text-xs text-gold tracking-[0.2em] uppercase">{image.label}</span>
               </div>

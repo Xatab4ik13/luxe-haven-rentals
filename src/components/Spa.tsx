@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Droplets, Flame, Waves, Sparkles } from "lucide-react";
+import { useHoverCapable } from "@/hooks/use-hover-capable";
 import sauna from "@/assets/sauna.jpg";
 import saunaNew from "@/assets/sauna-new.jpg";
 import shower from "@/assets/shower.jpg";
@@ -9,6 +10,7 @@ import bathroomGold from "@/assets/bathroom-gold.jpg";
 import bathroomSpa from "@/assets/bathroom-spa.jpg";
 
 const Spa = () => {
+  const isHoverCapable = useHoverCapable();
   const spaFeatures = [
     {
       icon: Droplets,
@@ -75,15 +77,15 @@ const Spa = () => {
           >
             <motion.div 
               className="col-span-2 relative overflow-hidden group"
-              whileHover={{ scale: 1.02 }}
+              whileHover={isHoverCapable ? { scale: 1.02 } : undefined}
             >
               <img
                 src={sauna}
                 alt="Сауна"
-                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                className={`w-full h-64 object-cover transition-transform duration-700 ease-out ${isHoverCapable ? "group-hover:scale-105" : ""}`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-              <div className="absolute inset-0 border border-gold/0 group-hover:border-gold/50 transition-colors duration-500" />
+              <div className={`absolute inset-0 border transition-colors duration-500 ${isHoverCapable ? "border-gold/0 group-hover:border-gold/50" : "border-gold/0"}`} />
               <div className="absolute bottom-4 left-4">
                 <span className="font-display text-xl text-cream">Русская баня</span>
               </div>
@@ -91,15 +93,15 @@ const Spa = () => {
             
             <motion.div 
               className="relative overflow-hidden group"
-              whileHover={{ scale: 1.05 }}
+              whileHover={isHoverCapable ? { scale: 1.05 } : undefined}
             >
               <img
                 src={shower}
                 alt="Душ"
-                className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                className={`w-full h-48 object-cover transition-transform duration-700 ease-out ${isHoverCapable ? "group-hover:scale-105" : ""}`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-              <div className="absolute inset-0 border border-gold/0 group-hover:border-gold/50 transition-colors duration-500" />
+              <div className={`absolute inset-0 border transition-colors duration-500 ${isHoverCapable ? "border-gold/0 group-hover:border-gold/50" : "border-gold/0"}`} />
               <div className="absolute bottom-3 left-3">
                 <span className="font-display text-lg text-cream">Душевая</span>
               </div>
@@ -107,15 +109,15 @@ const Spa = () => {
             
             <motion.div 
               className="relative overflow-hidden group"
-              whileHover={{ scale: 1.05 }}
+              whileHover={isHoverCapable ? { scale: 1.05 } : undefined}
             >
               <img
                 src={basement}
                 alt="Цокольный этаж"
-                className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                className={`w-full h-48 object-cover transition-transform duration-700 ease-out ${isHoverCapable ? "group-hover:scale-105" : ""}`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-              <div className="absolute inset-0 border border-gold/0 group-hover:border-gold/50 transition-colors duration-500" />
+              <div className={`absolute inset-0 border transition-colors duration-500 ${isHoverCapable ? "border-gold/0 group-hover:border-gold/50" : "border-gold/0"}`} />
               <div className="absolute bottom-3 left-3">
                 <span className="font-display text-lg text-cream">Цоколь</span>
               </div>
@@ -151,7 +153,7 @@ const Spa = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.5, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
-                  whileHover={{ borderColor: "hsl(38 85% 55%)", y: -4 }}
+                  whileHover={isHoverCapable ? { borderColor: "hsl(38 85% 55%)", y: -4 } : undefined}
                   className="flex items-start gap-3 p-4 border border-border transition-all duration-500"
                 >
                   <feature.icon className="w-6 h-6 text-gold flex-shrink-0" />
@@ -174,7 +176,7 @@ const Spa = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-          whileHover={{ borderColor: "hsl(38 85% 55%)" }}
+          whileHover={isHoverCapable ? { borderColor: "hsl(38 85% 55%)" } : undefined}
           className="bg-card border border-gold/30 p-8 text-center transition-colors duration-500"
         >
           <p className="font-body text-cream/80">

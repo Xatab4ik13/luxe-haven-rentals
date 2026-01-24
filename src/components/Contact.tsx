@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, Send, Star, Sparkles } from "lucide-react";
+import { useHoverCapable } from "@/hooks/use-hover-capable";
 import houseChristmas from "@/assets/house-christmas.jpg";
 import BookingModal from "./BookingModal";
 
 const Contact = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const isHoverCapable = useHoverCapable();
   return (
     <section id="contact" className="py-24 md:py-32 bg-charcoal relative overflow-hidden">
       {/* Background Image with overlay */}
@@ -60,14 +61,14 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: 0, ease: [0.25, 0.1, 0.25, 1] }}
-            whileHover={{ 
+            whileHover={isHoverCapable ? { 
               y: -6, 
               borderColor: "hsl(38 85% 55%)",
               boxShadow: "0 20px 40px -20px hsl(38 85% 55% / 0.3)"
-            }}
+            } : undefined}
             className="group p-8 bg-card border border-border text-center transition-all duration-500"
           >
-            <motion.div whileHover={{ scale: 1.1, rotate: 5 }}>
+            <motion.div whileHover={isHoverCapable ? { scale: 1.1, rotate: 5 } : undefined}>
               <Phone className="w-12 h-12 text-gold mx-auto mb-4" />
             </motion.div>
             <h4 className="font-display text-xl text-cream mb-2">Телефон</h4>
@@ -82,14 +83,14 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: 0.08, ease: [0.25, 0.1, 0.25, 1] }}
-            whileHover={{ 
+            whileHover={isHoverCapable ? { 
               y: -6, 
               borderColor: "hsl(38 85% 55%)",
               boxShadow: "0 20px 40px -20px hsl(38 85% 55% / 0.3)"
-            }}
+            } : undefined}
             className="group p-8 bg-card border border-border text-center transition-all duration-500"
           >
-            <motion.div whileHover={{ scale: 1.1, rotate: 5 }}>
+            <motion.div whileHover={isHoverCapable ? { scale: 1.1, rotate: 5 } : undefined}>
               <Send className="w-12 h-12 text-gold mx-auto mb-4" />
             </motion.div>
             <h4 className="font-display text-xl text-cream mb-2">Заявка</h4>
@@ -105,7 +106,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-          whileHover={{ borderColor: "hsl(38 85% 55%)" }}
+          whileHover={isHoverCapable ? { borderColor: "hsl(38 85% 55%)" } : undefined}
           className="text-center p-6 md:p-12 bg-card border-2 border-gold transition-colors duration-500 flex flex-col items-center"
         >
             <motion.div
@@ -136,7 +137,7 @@ const Contact = () => {
           </p>
           <motion.button
             onClick={() => setIsModalOpen(true)}
-            whileHover={{ scale: 1.05, boxShadow: "0 0 40px hsl(38 85% 55% / 0.5)" }}
+            whileHover={isHoverCapable ? { scale: 1.05, boxShadow: "0 0 40px hsl(38 85% 55% / 0.5)" } : undefined}
             whileTap={{ scale: 0.95 }}
             className="font-body px-8 md:px-12 py-4 md:py-5 bg-gold text-obsidian font-medium tracking-[0.15em] md:tracking-[0.2em] uppercase transition-all duration-300 text-sm md:text-base whitespace-nowrap"
           >
