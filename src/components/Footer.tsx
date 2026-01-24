@@ -26,8 +26,8 @@ const Footer = () => {
             className="flex items-center gap-3"
           >
             <Star className="w-5 h-5 text-gold" fill="currentColor" />
-            <span className="font-display text-2xl text-gradient-gold tracking-[0.15em]">
-              DVORETS DZZOTTI
+            <span className="font-display text-2xl text-gradient-gold tracking-[0.1em]">
+              ДВОРЕЦ ДЗОТТИ
             </span>
             <Star className="w-5 h-5 text-gold" fill="currentColor" />
           </motion.div>
@@ -69,7 +69,7 @@ const Footer = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="font-body text-xs text-muted-foreground flex items-center gap-2"
           >
-            © {currentYear} Dvorets Dzzotti · Сделано с{" "}
+            © {currentYear} Дворец Дзотти · Сделано с{" "}
             <Heart className="w-3 h-3 text-gold" fill="currentColor" />
           </motion.p>
         </div>

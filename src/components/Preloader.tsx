@@ -39,7 +39,7 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
           >
             <img
               src={dvoretsEvening}
-              alt="Dvorets Dzzotti"
+              alt="Дворец Дзотти"
               className="w-full h-full object-cover opacity-30"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-obsidian via-obsidian/70 to-obsidian" />
@@ -85,16 +85,16 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
               transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="text-center"
             >
-              <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-cream tracking-[0.12em] uppercase font-light">
-                Dvorets
+              <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-cream tracking-[0.08em] font-light">
+                Дворец
               </h1>
               <motion.div
-                initial={{ opacity: 0, y: 20, letterSpacing: "0.5em" }}
-                animate={{ opacity: 1, y: 0, letterSpacing: "0.25em" }}
+                initial={{ opacity: 0, y: 20, letterSpacing: "0.3em" }}
+                animate={{ opacity: 1, y: 0, letterSpacing: "0.15em" }}
                 transition={{ duration: 1.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 className="font-display text-3xl md:text-5xl lg:text-6xl text-gradient-gold mt-1 md:mt-2 font-normal"
               >
-                Dzzotti
+                Дзотти
               </motion.div>
             </motion.div>
 
@@ -103,7 +103,7 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 1.2 }}
-              className="font-body text-xs md:text-sm text-muted-foreground tracking-[0.35em] uppercase mt-8"
+              className="font-body text-xs md:text-sm text-muted-foreground tracking-[0.25em] uppercase mt-8"
             >
               Luxury Private Estate
             </motion.p>
