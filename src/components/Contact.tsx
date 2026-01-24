@@ -55,7 +55,7 @@ const Contact = () => {
         {/* Contact Cards - Only 2 now */}
         <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-16">
           <motion.a
-            href="tel:+79001234567"
+            href="tel:+79290286136"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
