@@ -1,147 +1,214 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import facadeHero from "@/assets/facade-hero.jpg";
 
 const Preloader = ({ onComplete }: { onComplete: () => void }) => {
   const [progress, setProgress] = useState(0);
+  const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
-          clearInterval(timer);
-          setTimeout(onComplete, 500);
+          clearInterval(interval);
+          setIsExiting(true);
+          setTimeout(onComplete, 1200);
           return 100;
         }
-        return prev + 2;
+        return Math.min(100, prev + Math.random() * 12 + 3);
       });
-    }, 40);
+    }, 120);
 
-    return () => clearInterval(timer);
+    return () => clearInterval(interval);
   }, [onComplete]);
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background">
-      {/* Animated House SVG */}
-      <div className="relative mb-8">
-        <svg
-          width="120"
-          height="120"
-          viewBox="0 0 100 100"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="animate-draw-house"
+    <AnimatePresence>
+      {!isExiting && (
+        <motion.div
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-obsidian overflow-hidden"
         >
-          {/* Roof */}
-          <path
-            d="M50 10 L10 45 L90 45 Z"
-            stroke="hsl(43 74% 49%)"
-            strokeWidth="2"
-            fill="none"
-            className="animate-draw-house"
-          />
-          {/* House body */}
-          <rect
-            x="15"
-            y="45"
-            width="70"
-            height="45"
-            stroke="hsl(43 74% 49%)"
-            strokeWidth="2"
-            fill="none"
-            className="animate-draw-house"
-            style={{ animationDelay: "0.5s" }}
-          />
-          {/* Door */}
-          <rect
-            x="40"
-            y="60"
-            width="20"
-            height="30"
-            stroke="hsl(43 74% 49%)"
-            strokeWidth="2"
-            fill="none"
-            className="animate-draw-house"
-            style={{ animationDelay: "1s" }}
-          />
-          {/* Windows */}
-          <rect
-            x="22"
-            y="55"
-            width="12"
-            height="12"
-            stroke="hsl(43 74% 49%)"
-            strokeWidth="2"
-            fill="none"
-            className="animate-draw-house"
-            style={{ animationDelay: "1.2s" }}
-          />
-          <rect
-            x="66"
-            y="55"
-            width="12"
-            height="12"
-            stroke="hsl(43 74% 49%)"
-            strokeWidth="2"
-            fill="none"
-            className="animate-draw-house"
-            style={{ animationDelay: "1.4s" }}
-          />
-          {/* Chimney */}
-          <rect
-            x="70"
-            y="18"
-            width="10"
-            height="20"
-            stroke="hsl(43 74% 49%)"
-            strokeWidth="2"
-            fill="none"
-            className="animate-draw-house"
-            style={{ animationDelay: "1.6s" }}
-          />
-          {/* Balcony railings */}
-          <line
-            x1="15"
-            y1="52"
-            x2="35"
-            y2="52"
-            stroke="hsl(43 74% 49%)"
-            strokeWidth="1"
-            className="animate-draw-house"
-            style={{ animationDelay: "1.8s" }}
-          />
-          <line
-            x1="65"
-            y1="52"
-            x2="85"
-            y2="52"
-            stroke="hsl(43 74% 49%)"
-            strokeWidth="1"
-            className="animate-draw-house"
-            style={{ animationDelay: "1.8s" }}
-          />
-        </svg>
-        
-        {/* Glowing effect */}
-        <div className="absolute inset-0 blur-xl bg-gold/20 animate-pulse-gold" />
-      </div>
+          {/* Background Image with Ken Burns effect */}
+          <motion.div
+            initial={{ scale: 1.2 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 10, ease: "linear" }}
+            className="absolute inset-0"
+          >
+            <img
+              src={facadeHero}
+              alt="Zamok Dzotti"
+              className="w-full h-full object-cover opacity-25"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-obsidian via-obsidian/70 to-obsidian" />
+            <div className="absolute inset-0 bg-gradient-to-r from-obsidian/60 via-transparent to-obsidian/60" />
+          </motion.div>
 
-      {/* Text */}
-      <h1 className="font-playfair text-2xl md:text-3xl text-gradient-gold mb-6 tracking-wider">
-        БЕЛЫЙ ДОМ
-      </h1>
+          {/* Radial gold glow */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 2.5, ease: "easeOut" }}
+              className="w-[700px] h-[700px] rounded-full"
+              style={{
+                background: "radial-gradient(circle, hsl(38 85% 55% / 0.12) 0%, transparent 60%)",
+              }}
+            />
+          </div>
 
-      {/* Progress bar */}
-      <div className="w-48 h-[2px] bg-muted overflow-hidden rounded-full">
-        <div
-          className="h-full bg-gradient-to-r from-gold-dark via-gold to-gold-light transition-all duration-300 ease-out"
-          style={{ width: `${progress}%` }}
-        />
-      </div>
+          {/* Content */}
+          <div className="relative z-10 flex flex-col items-center px-4">
+            {/* Decorative top element */}
+            <motion.div
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              transition={{ duration: 1.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center gap-4 mb-10"
+            >
+              <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent to-gold" />
+              <motion.div
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ duration: 1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="w-2 h-2 bg-gold rotate-45"
+              />
+              <div className="w-16 md:w-24 h-px bg-gradient-to-l from-transparent to-gold" />
+            </motion.div>
 
-      {/* Percentage */}
-      <p className="mt-4 font-montserrat text-sm text-muted-foreground tracking-widest">
-        {progress}%
-      </p>
-    </div>
+            {/* Main title */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="text-center"
+            >
+              <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-cream tracking-[0.12em] uppercase font-light">
+                Zamok
+              </h1>
+              <motion.div
+                initial={{ opacity: 0, y: 20, letterSpacing: "0.5em" }}
+                animate={{ opacity: 1, y: 0, letterSpacing: "0.25em" }}
+                transition={{ duration: 1.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="font-display text-3xl md:text-5xl lg:text-6xl text-gradient-gold mt-1 md:mt-2 font-normal"
+              >
+                Dzotti
+              </motion.div>
+            </motion.div>
+
+            {/* Subtitle */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 1.2 }}
+              className="font-body text-xs md:text-sm text-muted-foreground tracking-[0.35em] uppercase mt-8"
+            >
+              Luxury Private Estate
+            </motion.p>
+
+            {/* Progress bar */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.5 }}
+              className="mt-14 relative"
+            >
+              <div className="w-48 md:w-56 h-[1px] bg-charcoal-light/50 overflow-hidden">
+                <motion.div
+                  className="h-full bg-gradient-to-r from-gold-dark via-gold to-gold-light"
+                  style={{ width: `${progress}%` }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                />
+              </div>
+              
+              {/* Progress glow */}
+              <motion.div
+                className="absolute top-0 h-full bg-gold/50 blur-sm"
+                style={{ width: `${progress}%` }}
+              />
+              
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.8 }}
+                className="absolute -bottom-8 left-1/2 -translate-x-1/2 font-body text-xs text-gold/70 tracking-[0.2em]"
+              >
+                {Math.min(100, Math.round(progress))}%
+              </motion.span>
+            </motion.div>
+
+            {/* Decorative bottom element */}
+            <motion.div
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              transition={{ duration: 1.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center gap-4 mt-20"
+            >
+              <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent to-gold/50" />
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.8, delay: 1 }}
+                className="w-1.5 h-1.5 bg-gold/50 rotate-45"
+              />
+              <div className="w-16 md:w-24 h-px bg-gradient-to-l from-transparent to-gold/50" />
+            </motion.div>
+          </div>
+
+          {/* Corner decorations */}
+          <motion.div
+            initial={{ opacity: 0, x: -20, y: -20 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            transition={{ delay: 2, duration: 0.8 }}
+            className="absolute top-6 left-6 md:top-10 md:left-10 w-12 md:w-20 h-12 md:h-20 border-l border-t border-gold/20"
+          />
+          <motion.div
+            initial={{ opacity: 0, x: 20, y: -20 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            transition={{ delay: 2.1, duration: 0.8 }}
+            className="absolute top-6 right-6 md:top-10 md:right-10 w-12 md:w-20 h-12 md:h-20 border-r border-t border-gold/20"
+          />
+          <motion.div
+            initial={{ opacity: 0, x: -20, y: 20 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            transition={{ delay: 2.2, duration: 0.8 }}
+            className="absolute bottom-6 left-6 md:bottom-10 md:left-10 w-12 md:w-20 h-12 md:h-20 border-l border-b border-gold/20"
+          />
+          <motion.div
+            initial={{ opacity: 0, x: 20, y: 20 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            transition={{ delay: 2.3, duration: 0.8 }}
+            className="absolute bottom-6 right-6 md:bottom-10 md:right-10 w-12 md:w-20 h-12 md:h-20 border-r border-b border-gold/20"
+          />
+
+          {/* Floating particles */}
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ 
+                opacity: [0, 0.6, 0],
+                y: [-20, -150],
+              }}
+              transition={{
+                duration: 4,
+                delay: 2 + i * 0.5,
+                repeat: Infinity,
+                repeatDelay: 2,
+              }}
+              className="absolute w-1 h-1 bg-gold/40 rounded-full"
+              style={{
+                left: `${15 + i * 14}%`,
+                bottom: '20%',
+              }}
+            />
+          ))}
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
