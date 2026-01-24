@@ -6,9 +6,9 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with parallax */}
       <motion.div
-        initial={{ scale: 1.1 }}
+        initial={{ scale: 1.05 }}
         animate={{ scale: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
         className="absolute inset-0"
       >
         <img
@@ -34,31 +34,31 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-4 text-center">
         {/* Decorative top element */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
           className="flex items-center justify-center gap-4 mb-10"
         >
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: 80 }}
-            transition={{ duration: 1.2, delay: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="h-px bg-gradient-to-r from-transparent to-gold"
           />
           <Sparkles className="w-5 h-5 text-gold animate-glow-pulse" />
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: 80 }}
-            transition={{ duration: 1.2, delay: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="h-px bg-gradient-to-l from-transparent to-gold"
           />
         </motion.div>
 
         {/* Subtitle */}
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
           className="font-body text-xs md:text-sm text-gold tracking-[0.4em] uppercase mb-6"
         >
           Luxury Private Estate
@@ -66,9 +66,9 @@ const Hero = () => {
 
         {/* Title */}
         <motion.h1
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-cream mb-4 tracking-[0.05em]"
         >
           Dvorets{" "}
@@ -77,9 +77,9 @@ const Hero = () => {
 
         {/* Description */}
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.9 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
           className="font-body text-base md:text-lg text-cream/70 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
           Роскошная резиденция для эксклюзивных мероприятий и незабываемого отдыха.
@@ -89,9 +89,9 @@ const Hero = () => {
 
         {/* Features */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.1 }}
+          transition={{ duration: 0.5, delay: 0.35 }}
           className="flex flex-wrap justify-center gap-8 md:gap-12 mb-14"
         >
           {[
@@ -101,12 +101,12 @@ const Hero = () => {
           ].map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.2 + index * 0.1 }}
+              transition={{ duration: 0.4, delay: 0.4 + index * 0.05 }}
               className="flex items-center gap-3 text-cream/60 group"
             >
-              <item.icon className="w-5 h-5 text-gold group-hover:scale-110 transition-transform duration-300" />
+              <item.icon className="w-5 h-5 text-gold group-hover:scale-110 transition-transform duration-200" />
               <span className="font-body text-sm tracking-wide">{item.text}</span>
             </motion.div>
           ))}
@@ -114,25 +114,25 @@ const Hero = () => {
 
         {/* CTA Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.4 }}
+          transition={{ duration: 0.5, delay: 0.45 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <motion.a
             href="#contact"
             whileHover={{ scale: 1.02, boxShadow: "0 0 40px hsl(38 85% 55% / 0.4)" }}
             whileTap={{ scale: 0.98 }}
-            className="font-body px-10 py-4 bg-gold text-obsidian font-medium text-sm tracking-[0.15em] uppercase transition-all duration-500 relative overflow-hidden group"
+            className="font-body px-10 py-4 bg-gold text-obsidian font-medium text-sm tracking-[0.15em] uppercase transition-all duration-300 relative overflow-hidden group"
           >
             <span className="relative z-10">Забронировать</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-gold-light to-gold opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-r from-gold-light to-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </motion.a>
           <motion.a
             href="#about"
             whileHover={{ scale: 1.02, borderColor: "hsl(38 85% 55%)" }}
             whileTap={{ scale: 0.98 }}
-            className="font-body px-10 py-4 border border-cream/30 text-cream font-medium text-sm tracking-[0.15em] uppercase hover:text-gold transition-all duration-500"
+            className="font-body px-10 py-4 border border-cream/30 text-cream font-medium text-sm tracking-[0.15em] uppercase hover:text-gold transition-all duration-300"
           >
             Подробнее
           </motion.a>
@@ -143,12 +143,12 @@ const Hero = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
+        transition={{ delay: 0.8 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
         <a
           href="#about"
-          className="flex flex-col items-center gap-3 text-cream/40 hover:text-gold transition-colors duration-500 group"
+          className="flex flex-col items-center gap-3 text-cream/40 hover:text-gold transition-colors duration-300 group"
         >
           <span className="font-body text-xs tracking-[0.3em] uppercase">Листайте</span>
           <motion.div
@@ -164,13 +164,13 @@ const Hero = () => {
       <motion.div
         initial={{ opacity: 0, height: 0 }}
         animate={{ opacity: 1, height: 120 }}
-        transition={{ duration: 1.5, delay: 1.5 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
         className="hidden lg:block absolute left-10 top-1/2 -translate-y-1/2 w-px bg-gradient-to-b from-transparent via-gold/50 to-transparent"
       />
       <motion.div
         initial={{ opacity: 0, height: 0 }}
         animate={{ opacity: 1, height: 120 }}
-        transition={{ duration: 1.5, delay: 1.6 }}
+        transition={{ duration: 0.6, delay: 0.55 }}
         className="hidden lg:block absolute right-10 top-1/2 -translate-y-1/2 w-px bg-gradient-to-b from-transparent via-gold/50 to-transparent"
       />
     </section>

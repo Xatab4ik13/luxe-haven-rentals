@@ -69,17 +69,17 @@ const Bedrooms = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.5 }}
           className="text-center mb-20"
         >
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="flex items-center justify-center gap-4 mb-6"
           >
             <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent to-gold" />
@@ -99,10 +99,10 @@ const Bedrooms = () => {
           {bedrooms.map((bedroom, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
               className="group"
             >
               <motion.div
@@ -112,10 +112,10 @@ const Bedrooms = () => {
                 <img
                   src={bedroom.image}
                   alt={bedroom.title}
-                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-obsidian to-transparent opacity-60" />
-                <div className="absolute inset-0 border border-gold/0 group-hover:border-gold/50 transition-colors duration-500" />
+                <div className="absolute inset-0 border border-gold/0 group-hover:border-gold/50 transition-colors duration-300" />
                 
                 {/* Hover overlay */}
                 <motion.div
@@ -133,10 +133,10 @@ const Bedrooms = () => {
 
         {/* Bathroom Gallery - 4 images */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           className="mb-16"
         >
           <h3 className="font-display text-2xl text-cream text-center mb-8">
@@ -146,20 +146,20 @@ const Bedrooms = () => {
             {bathroomGallery.map((image, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
                 whileHover={{ scale: 1.05, zIndex: 10 }}
                 className="relative overflow-hidden group cursor-pointer"
               >
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-40 md:h-48 object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-40 md:h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-70" />
-                <div className="absolute inset-0 border border-gold/0 group-hover:border-gold transition-colors duration-500" />
+                <div className="absolute inset-0 border border-gold/0 group-hover:border-gold transition-colors duration-300" />
                 <div className="absolute bottom-3 left-3">
                   <span className="font-body text-xs text-gold tracking-[0.15em] uppercase">{image.label}</span>
                 </div>
@@ -173,12 +173,12 @@ const Bedrooms = () => {
           {floorInfo.map((floor, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
+              transition={{ duration: 0.4, delay: index * 0.08 }}
               whileHover={{ borderColor: "hsl(38 85% 55%)", y: -4 }}
-              className="p-8 bg-card border border-border transition-all duration-500"
+              className="p-8 bg-card border border-border transition-all duration-300"
             >
               <div className="flex items-center gap-4 mb-6">
                 <floor.icon className="w-8 h-8 text-gold" />
@@ -191,7 +191,7 @@ const Bedrooms = () => {
                     initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.5 + idx * 0.1 }}
+                    transition={{ delay: 0.2 + idx * 0.05 }}
                     className="font-body text-sm text-muted-foreground flex items-center gap-3"
                   >
                     <span className="w-1.5 h-1.5 bg-gold rounded-full" />
@@ -205,17 +205,17 @@ const Bedrooms = () => {
 
         {/* View highlight */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           whileHover={{ borderColor: "hsl(38 85% 55%)" }}
-          className="p-10 border border-gold/30 bg-card/50 flex flex-col md:flex-row items-center justify-between gap-8 transition-colors duration-500"
+          className="p-10 border border-gold/30 bg-card/50 flex flex-col md:flex-row items-center justify-between gap-8 transition-colors duration-300"
         >
           <div className="flex items-center gap-6">
             <motion.div
               animate={{ rotate: [0, 10, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             >
               <Eye className="w-12 h-12 text-gold" />
             </motion.div>
@@ -230,7 +230,7 @@ const Bedrooms = () => {
             href="#contact"
             whileHover={{ scale: 1.05, boxShadow: "0 0 30px hsl(38 85% 55% / 0.4)" }}
             whileTap={{ scale: 0.95 }}
-            className="font-body text-sm px-8 py-4 bg-gold text-obsidian tracking-[0.15em] uppercase transition-all duration-500"
+            className="font-body text-sm px-8 py-4 bg-gold text-obsidian tracking-[0.15em] uppercase transition-all duration-300"
           >
             Забронировать
           </motion.a>
