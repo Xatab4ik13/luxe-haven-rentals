@@ -1,18 +1,8 @@
 import { motion } from "framer-motion";
 import { Phone, MessageCircle, MapPin, Clock, Star, Sparkles } from "lucide-react";
 import houseChristmas from "@/assets/house-christmas.jpg";
-import dvoretsWinter from "@/assets/dvorets-winter.jpg";
-import facadeNight from "@/assets/facade-night.jpg";
-import facadeFront from "@/assets/facade-front.jpg";
-import facadeBack from "@/assets/facade-back.jpg";
 
 const Contact = () => {
-  const contactImages = [
-    { src: dvoretsWinter, alt: "Dvorets зимой" },
-    { src: facadeNight, alt: "Фасад ночью" },
-    { src: facadeFront, alt: "Фасад спереди" },
-    { src: facadeBack, alt: "Фасад сзади" },
-  ];
 
   return (
     <section id="contact" className="py-24 md:py-32 bg-charcoal relative overflow-hidden">
@@ -58,34 +48,6 @@ const Contact = () => {
           </p>
         </motion.div>
 
-        {/* Image Gallery */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16"
-        >
-          {contactImages.map((image, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.05, zIndex: 10 }}
-              className="relative overflow-hidden group cursor-pointer"
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-40 md:h-48 object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-60" />
-              <div className="absolute inset-0 border border-gold/0 group-hover:border-gold transition-colors duration-500" />
-            </motion.div>
-          ))}
-        </motion.div>
 
         {/* Contact Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
