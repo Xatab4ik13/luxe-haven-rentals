@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { ChevronDown, MapPin, Users, Star, Sparkles } from "lucide-react";
 import dvoretsEvening from "@/assets/dvorets-evening.jpg";
+import { useHoverCapable } from "@/hooks/use-hover-capable";
 const Hero = () => {
+  const isHoverCapable = useHoverCapable();
+  
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with parallax */}
@@ -106,7 +109,7 @@ const Hero = () => {
                 transition={{ duration: 0.6, delay: 0.7 + index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
               className="flex items-center gap-3 text-cream/60 group"
             >
-              <item.icon className="w-5 h-5 text-gold group-hover:scale-110 transition-transform duration-200" />
+              <item.icon className={`w-5 h-5 text-gold transition-transform duration-200 ${isHoverCapable ? "group-hover:scale-110" : ""}`} />
               <span className="font-body text-sm tracking-wide">{item.text}</span>
             </motion.div>
           ))}
@@ -121,18 +124,18 @@ const Hero = () => {
         >
           <motion.a
             href="#contact"
-            whileHover={{ scale: 1.02, boxShadow: "0 0 40px hsl(38 85% 55% / 0.4)" }}
+            whileHover={isHoverCapable ? { scale: 1.02, boxShadow: "0 0 40px hsl(38 85% 55% / 0.4)" } : undefined}
             whileTap={{ scale: 0.98 }}
             className="font-body px-10 py-4 bg-gold text-obsidian font-medium text-sm tracking-[0.15em] uppercase transition-all duration-300 relative overflow-hidden group"
           >
             <span className="relative z-10">Забронировать</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-gold-light to-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className={`absolute inset-0 bg-gradient-to-r from-gold-light to-gold opacity-0 transition-opacity duration-300 ${isHoverCapable ? "group-hover:opacity-100" : ""}`} />
           </motion.a>
           <motion.a
             href="#about"
-            whileHover={{ scale: 1.02, borderColor: "hsl(38 85% 55%)" }}
+            whileHover={isHoverCapable ? { scale: 1.02, borderColor: "hsl(38 85% 55%)" } : undefined}
             whileTap={{ scale: 0.98 }}
-            className="font-body px-10 py-4 border border-cream/30 text-cream font-medium text-sm tracking-[0.15em] uppercase hover:text-gold transition-all duration-300"
+            className={`font-body px-10 py-4 border border-cream/30 text-cream font-medium text-sm tracking-[0.15em] uppercase transition-all duration-300 ${isHoverCapable ? "hover:text-gold" : ""}`}
           >
             Подробнее
           </motion.a>

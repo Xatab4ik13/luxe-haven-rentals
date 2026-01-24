@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Bed, DoorOpen, Bath, Eye, Sparkles } from "lucide-react";
+import { useHoverCapable } from "@/hooks/use-hover-capable";
 import masterBedroom from "@/assets/master-bedroom.jpg";
 import bedroomVelvet from "@/assets/bedroom-velvet.jpg";
 import bedroomBalcony from "@/assets/bedroom-balcony.jpg";
@@ -12,6 +13,8 @@ import bathroomSpa from "@/assets/bathroom-spa.jpg";
 import jacuzzi from "@/assets/jacuzzi.jpg";
 
 const Bedrooms = () => {
+  const isHoverCapable = useHoverCapable();
+  
   const bedrooms = [
     {
       image: masterBedroom,
@@ -106,25 +109,27 @@ const Bedrooms = () => {
               className="group"
             >
               <motion.div
-                whileHover={{ scale: 1.02 }}
+                whileHover={isHoverCapable ? { scale: 1.02 } : undefined}
                 className="relative overflow-hidden mb-4"
               >
                 <img
                   src={bedroom.image}
                   alt={bedroom.title}
-                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className={`w-full h-64 object-cover transition-transform duration-700 ease-out ${isHoverCapable ? "group-hover:scale-105" : ""}`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-obsidian to-transparent opacity-60" />
-                <div className="absolute inset-0 border border-gold/0 group-hover:border-gold/50 transition-colors duration-500" />
+                <div className={`absolute inset-0 border transition-colors duration-500 ${isHoverCapable ? "border-gold/0 group-hover:border-gold/50" : "border-gold/0"}`} />
                 
-                {/* Hover overlay */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  className="absolute inset-0 bg-gold/10 flex items-center justify-center"
-                >
-                  <Sparkles className="w-10 h-10 text-gold" />
-                </motion.div>
+                {/* Hover overlay - only on desktop */}
+                {isHoverCapable && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    className="absolute inset-0 bg-gold/10 flex items-center justify-center"
+                  >
+                    <Sparkles className="w-10 h-10 text-gold" />
+                  </motion.div>
+                )}
               </motion.div>
               <h3 className="font-display text-xl text-cream">{bedroom.title}</h3>
             </motion.div>
@@ -150,16 +155,16 @@ const Bedrooms = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.06, ease: [0.25, 0.1, 0.25, 1] }}
-                whileHover={{ scale: 1.02, zIndex: 10 }}
+                whileHover={isHoverCapable ? { scale: 1.02, zIndex: 10 } : undefined}
                 className="relative overflow-hidden group cursor-pointer"
               >
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-40 md:h-48 object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className={`w-full h-40 md:h-48 object-cover transition-transform duration-700 ease-out ${isHoverCapable ? "group-hover:scale-105" : ""}`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-70" />
-                <div className="absolute inset-0 border border-gold/0 group-hover:border-gold transition-colors duration-500" />
+                <div className={`absolute inset-0 border transition-colors duration-500 ${isHoverCapable ? "border-gold/0 group-hover:border-gold" : "border-gold/0"}`} />
                 <div className="absolute bottom-3 left-3">
                   <span className="font-body text-xs text-gold tracking-[0.15em] uppercase">{image.label}</span>
                 </div>
@@ -177,7 +182,7 @@ const Bedrooms = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
-              whileHover={{ borderColor: "hsl(38 85% 55%)", y: -4 }}
+              whileHover={isHoverCapable ? { borderColor: "hsl(38 85% 55%)", y: -4 } : undefined}
               className="p-8 bg-card border border-border transition-all duration-500"
             >
               <div className="flex items-center gap-4 mb-6">
@@ -209,7 +214,7 @@ const Bedrooms = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-          whileHover={{ borderColor: "hsl(38 85% 55%)" }}
+          whileHover={isHoverCapable ? { borderColor: "hsl(38 85% 55%)" } : undefined}
           className="p-10 border border-gold/30 bg-card/50 flex flex-col md:flex-row items-center justify-between gap-8 transition-colors duration-500"
         >
           <div className="flex items-center gap-6">
@@ -228,7 +233,7 @@ const Bedrooms = () => {
           </div>
           <motion.a
             href="#contact"
-            whileHover={{ scale: 1.05, boxShadow: "0 0 30px hsl(38 85% 55% / 0.4)" }}
+            whileHover={isHoverCapable ? { scale: 1.05, boxShadow: "0 0 30px hsl(38 85% 55% / 0.4)" } : undefined}
             whileTap={{ scale: 0.95 }}
             className="font-body text-sm px-8 py-4 bg-gold text-obsidian tracking-[0.15em] uppercase transition-all duration-300"
           >
