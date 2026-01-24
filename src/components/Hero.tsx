@@ -98,7 +98,7 @@ const Hero = () => {
           className="flex flex-wrap justify-center gap-8 md:gap-12 mb-14"
         >
           {[
-            { icon: Users, text: "До 50 гостей" },
+            { icon: Users, text: "До 80 гостей" },
             { icon: MapPin, text: "30 мин от Москвы" },
             { icon: Star, text: "Премиум класс" },
           ].map((item, index) => (

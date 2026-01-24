@@ -165,7 +165,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                     <option value="" disabled className="text-muted-foreground">
                       Количество гостей
                     </option>
-                    {[...Array(50)].map((_, i) => (
+                    {[...Array(80)].map((_, i) => (
                       <option key={i + 1} value={i + 1} className="bg-card text-cream">
                         {i + 1} {i === 0 ? "гость" : i < 4 ? "гостя" : "гостей"}
                       </option>
