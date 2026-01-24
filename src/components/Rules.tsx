@@ -195,34 +195,26 @@ const Rules = () => {
         </div>
 
         {/* Additional Info Cards */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+          className="grid md:grid-cols-3 gap-6"
+        >
           {infoCards.map((card, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
-              whileHover={{ 
-                borderColor: "hsl(38 85% 55%)", 
-                y: -8,
-                boxShadow: "0 20px 40px -20px hsl(38 85% 55% / 0.3)"
-              }}
-              className="p-8 bg-card border border-gold/30 transition-all duration-500"
+              className="p-8 bg-card border border-gold/30"
             >
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ duration: 0.3 }}
-              >
-                <card.icon className="w-10 h-10 text-gold mb-5" />
-              </motion.div>
+              <card.icon className="w-10 h-10 text-gold mb-5" />
               <h4 className="font-display text-xl text-cream mb-3">{card.title}</h4>
               <p className="font-body text-sm text-muted-foreground leading-relaxed">
                 {card.description}
               </p>
-            </motion.div>
+            </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
