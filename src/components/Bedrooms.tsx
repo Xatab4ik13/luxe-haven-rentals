@@ -174,16 +174,17 @@ const Bedrooms = () => {
         </motion.div>
 
         {/* Floor Plan Info */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+          className="grid md:grid-cols-3 gap-6 mb-16"
+        >
           {floorInfo.map((floor, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
-              whileHover={isHoverCapable ? { borderColor: "hsl(38 85% 55%)", y: -4 } : undefined}
-              className="p-8 bg-card border border-border transition-all duration-500"
+              className="p-8 bg-card border border-border"
             >
               <div className="flex items-center gap-4 mb-6">
                 <floor.icon className="w-8 h-8 text-gold" />
@@ -191,22 +192,18 @@ const Bedrooms = () => {
               </div>
               <ul className="space-y-3">
                 {floor.items.map((item, idx) => (
-                  <motion.li
+                  <li
                     key={idx}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 + idx * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
                     className="font-body text-sm text-muted-foreground flex items-center gap-3"
                   >
                     <span className="w-1.5 h-1.5 bg-gold rounded-full" />
                     {item}
-                  </motion.li>
+                  </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           ))}
-        </div>
+        </motion.div>
 
         {/* View highlight */}
         <motion.div
