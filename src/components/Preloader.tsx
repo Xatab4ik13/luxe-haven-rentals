@@ -16,7 +16,7 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
         }
         return Math.min(100, prev + Math.random() * 12 + 3);
       });
-    }, 120);
+    }, 150);
 
     return () => clearInterval(interval);
   }, [onComplete]);
