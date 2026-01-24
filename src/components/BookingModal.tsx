@@ -74,13 +74,13 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
 
           {/* Modal */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-md z-50"
+            className="fixed inset-0 flex items-center justify-center p-4 z-50 pointer-events-none"
           >
-            <div className="bg-card border-2 border-gold/50 p-8 relative">
+            <div className="bg-card border-2 border-gold/50 p-8 relative w-full max-w-md max-h-[90vh] overflow-y-auto pointer-events-auto">
               {/* Close Button */}
               <button
                 onClick={onClose}
