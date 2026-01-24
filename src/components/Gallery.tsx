@@ -15,6 +15,16 @@ import gallery07 from "@/assets/gallery/gallery-07.jpg";
 import gallery08 from "@/assets/gallery/gallery-08.jpg";
 import gallery09 from "@/assets/gallery/gallery-09.jpg";
 import gallery10 from "@/assets/gallery/gallery-10.jpg";
+import gallery11 from "@/assets/gallery/gallery-11.jpg";
+import gallery12 from "@/assets/gallery/gallery-12.jpg";
+import gallery13 from "@/assets/gallery/gallery-13.jpg";
+import gallery14 from "@/assets/gallery/gallery-14.jpg";
+import gallery15 from "@/assets/gallery/gallery-15.jpg";
+import gallery16 from "@/assets/gallery/gallery-16.jpg";
+import gallery17 from "@/assets/gallery/gallery-17.jpg";
+import gallery18 from "@/assets/gallery/gallery-18.jpg";
+import gallery19 from "@/assets/gallery/gallery-19.jpg";
+import gallery20 from "@/assets/gallery/gallery-20.jpg";
 
 const galleryImages: string[] = [
   gallery01,
@@ -27,6 +37,16 @@ const galleryImages: string[] = [
   gallery08,
   gallery09,
   gallery10,
+  gallery11,
+  gallery12,
+  gallery13,
+  gallery14,
+  gallery15,
+  gallery16,
+  gallery17,
+  gallery18,
+  gallery19,
+  gallery20,
 ];
 
 const Gallery = () => {
