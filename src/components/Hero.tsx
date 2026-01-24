@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { ChevronDown, MapPin, Users, Star, Sparkles } from "lucide-react";
-import facadeHero from "@/assets/facade-hero.jpg";
-
+import dvoretsEvening from "@/assets/dvorets-evening.jpg";
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -13,8 +12,8 @@ const Hero = () => {
         className="absolute inset-0"
       >
         <img
-          src={facadeHero}
-          alt="Zamok Dzotti"
+          src={dvoretsEvening}
+          alt="Dvorets Dzzotti"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-obsidian/50 via-obsidian/30 to-obsidian" />
@@ -72,8 +71,8 @@ const Hero = () => {
           transition={{ duration: 1.2, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-cream mb-4 tracking-[0.05em]"
         >
-          Zamok{" "}
-          <span className="text-gradient-gold">Dzotti</span>
+          Dvorets{" "}
+          <span className="text-gradient-gold">Dzzotti</span>
         </motion.h1>
 
         {/* Description */}

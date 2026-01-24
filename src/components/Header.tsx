@@ -37,10 +37,10 @@ const Header = () => {
           {/* Logo */}
           <a href="#" className="flex flex-col items-center group">
             <span className="font-display text-xl md:text-2xl text-cream tracking-[0.15em] uppercase group-hover:text-gold transition-colors duration-500">
-              Zamok
+              Dvorets
             </span>
             <span className="font-display text-sm text-gold tracking-[0.2em] -mt-1">
-              Dzotti
+              Dzzotti
             </span>
           </a>
 
