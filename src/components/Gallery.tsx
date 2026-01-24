@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, Camera } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
-import AutoScroll from "embla-carousel-auto-scroll";
 import { useHoverCapable } from "@/hooks/use-hover-capable";
 
 // Import all gallery images
@@ -65,14 +64,23 @@ const galleryImages = [
 const Gallery = () => {
   const isHoverCapable = useHoverCapable();
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { 
-      loop: true, 
-      dragFree: true,
-      align: "start",
-    },
-    [AutoScroll({ speed: 0.5, stopOnInteraction: false, stopOnMouseEnter: true })]
-  );
+  const [isHovered, setIsHovered] = useState(false);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    loop: true, 
+    dragFree: true,
+    align: "start",
+  });
+
+  // Auto-scroll effect
+  useEffect(() => {
+    if (!emblaApi || isHovered) return;
+    
+    const interval = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [emblaApi, isHovered]);
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -149,7 +157,11 @@ const Gallery = () => {
       </div>
 
       {/* Carousel */}
-      <div className="relative">
+      <div 
+        className="relative"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         {/* Navigation buttons */}
         <button
           onClick={scrollPrev}
