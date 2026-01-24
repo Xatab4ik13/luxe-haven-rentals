@@ -153,27 +153,21 @@ const Amenities = () => {
               пожарить шашлыки — наш дом идеально подойдёт вам.
             </p>
 
-            <div className="grid grid-cols-2 gap-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+              className="grid grid-cols-2 gap-4"
+            >
               {amenities.map((amenity, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 8 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: index * 0.05, ease: [0.25, 0.1, 0.25, 1] }}
-                  whileHover={isHoverCapable ? { 
-                    borderColor: "hsl(38 85% 55%)", 
-                    y: -4,
-                    boxShadow: "0 10px 30px -10px hsl(38 85% 55% / 0.2)"
-                  } : undefined}
-                  className="group flex items-start gap-3 p-4 bg-card border border-border transition-all duration-500"
+                  className="flex items-start gap-3 p-4 bg-card border border-border"
                 >
-                  <motion.div 
-                    className={`p-2 bg-gold/10 transition-colors ${isHoverCapable ? "group-hover:bg-gold/20" : ""}`}
-                    whileHover={isHoverCapable ? { scale: 1.1, rotate: 5 } : undefined}
-                  >
+                  <div className="p-2 bg-gold/10">
                     <amenity.icon className="w-5 h-5 text-gold" />
-                  </motion.div>
+                  </div>
                   <div>
                     <h4 className="font-display text-cream text-sm mb-1">
                       {amenity.title}
@@ -182,9 +176,9 @@ const Amenities = () => {
                       {amenity.description}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         </div>
 
