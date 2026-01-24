@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import {
   Music,
   Tv,
@@ -7,8 +8,14 @@ import {
   Shield,
   Baby,
   Gamepad2,
+  Sparkles,
 } from "lucide-react";
 import livingRoom from "@/assets/living-room.jpg";
+import livingArea from "@/assets/living-area.jpg";
+import kitchen from "@/assets/kitchen.jpg";
+import houseEvening from "@/assets/house-evening.jpg";
+import houseGroup from "@/assets/house-group.jpg";
+import houseMain from "@/assets/house-main.jpg";
 
 const Amenities = () => {
   const amenities = [
@@ -54,26 +61,58 @@ const Amenities = () => {
     },
   ];
 
+  const galleryImages = [
+    { src: livingArea, alt: "Гостиная зона", label: "Гостиная" },
+    { src: kitchen, alt: "Кухня", label: "Кухня" },
+    { src: houseEvening, alt: "Дом вечером", label: "Вечер" },
+    { src: houseGroup, alt: "Групповое фото", label: "Атмосфера" },
+    { src: houseMain, alt: "Главный дом", label: "Фасад" },
+  ];
+
   return (
-    <section id="amenities" className="py-24 bg-background">
+    <section id="amenities" className="py-24 md:py-32 bg-background overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="font-montserrat text-sm text-gold tracking-widest uppercase">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-20"
+        >
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, delay: 0.2 }}
+            className="flex items-center justify-center gap-4 mb-6"
+          >
+            <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent to-gold" />
+            <Sparkles className="w-5 h-5 text-gold" />
+            <div className="w-16 md:w-24 h-px bg-gradient-to-l from-transparent to-gold" />
+          </motion.div>
+          <span className="font-body text-sm text-gold tracking-[0.3em] uppercase">
             Всё для вашего комфорта
           </span>
-          <h2 className="font-playfair text-3xl md:text-5xl text-cream mt-4 mb-6">
+          <h2 className="font-display text-4xl md:text-6xl text-cream mt-4 mb-6">
             Удобства и <span className="text-gradient-gold">развлечения</span>
           </h2>
-          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto" />
-        </div>
+        </motion.div>
 
         {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
           {/* Image */}
-          <div className="relative order-2 lg:order-1">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative order-2 lg:order-1"
+          >
             <div className="relative overflow-hidden">
-              <img
+              <motion.img
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.6 }}
                 src={livingRoom}
                 alt="Гостиная"
                 className="w-full h-[500px] object-cover"
@@ -81,13 +120,31 @@ const Amenities = () => {
               <div className="absolute inset-0 border border-gold/30" />
             </div>
             {/* Decorative elements */}
-            <div className="absolute -bottom-4 -right-4 w-32 h-32 border border-gold/20 hidden md:block" />
-            <div className="absolute -top-4 -left-4 w-16 h-16 border border-gold hidden md:block" />
-          </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="absolute -bottom-4 -right-4 w-32 h-32 border border-gold/20 hidden md:block"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="absolute -top-4 -left-4 w-16 h-16 border border-gold hidden md:block"
+            />
+          </motion.div>
 
           {/* Amenities Grid */}
-          <div className="order-1 lg:order-2">
-            <p className="font-montserrat text-muted-foreground leading-relaxed mb-8">
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="order-1 lg:order-2"
+          >
+            <p className="font-body text-muted-foreground leading-relaxed mb-8">
               Если вы хотите тихо и спокойно отдохнуть или отметить ваше важное событие, 
               насладиться природой, поиграть в настольные игры, попеть в караоке, попариться в баньке, 
               поплавать в тёплом бассейне, поиграть в бильярд, теннис, футбол или волейбол, 
@@ -96,35 +153,95 @@ const Amenities = () => {
 
             <div className="grid grid-cols-2 gap-4">
               {amenities.map((amenity, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className="group flex items-start gap-3 p-4 bg-card border border-border hover:border-gold transition-all duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  whileHover={{ 
+                    borderColor: "hsl(38 85% 55%)", 
+                    y: -4,
+                    boxShadow: "0 10px 30px -10px hsl(38 85% 55% / 0.2)"
+                  }}
+                  className="group flex items-start gap-3 p-4 bg-card border border-border transition-all duration-500"
                 >
-                  <div className="p-2 bg-gold/10 group-hover:bg-gold/20 transition-colors">
+                  <motion.div 
+                    className="p-2 bg-gold/10 group-hover:bg-gold/20 transition-colors"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                  >
                     <amenity.icon className="w-5 h-5 text-gold" />
-                  </div>
+                  </motion.div>
                   <div>
-                    <h4 className="font-playfair text-cream text-sm mb-1">
+                    <h4 className="font-display text-cream text-sm mb-1">
                       {amenity.title}
                     </h4>
-                    <p className="font-montserrat text-xs text-muted-foreground">
+                    <p className="font-body text-xs text-muted-foreground">
                       {amenity.description}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
 
+        {/* Gallery Grid - 5 images masonry style */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-20"
+        >
+          {galleryImages.map((image, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ scale: 1.03, zIndex: 10 }}
+              className={`relative overflow-hidden group cursor-pointer ${
+                index === 0 ? "md:col-span-2 md:row-span-2" : ""
+              }`}
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className={`w-full object-cover group-hover:scale-110 transition-transform duration-700 ${
+                  index === 0 ? "h-64 md:h-full" : "h-48 md:h-56"
+                }`}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-70" />
+              <div className="absolute inset-0 border border-gold/0 group-hover:border-gold transition-colors duration-500" />
+              <div className="absolute bottom-3 left-3">
+                <span className="font-body text-xs text-gold tracking-[0.2em] uppercase">{image.label}</span>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
         {/* Quote */}
-        <div className="mt-20 text-center max-w-3xl mx-auto">
-          <blockquote className="font-playfair text-xl md:text-2xl text-cream italic">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center max-w-3xl mx-auto"
+        >
+          <blockquote className="font-display text-xl md:text-2xl text-cream italic">
             "Этот уголок рая подходит как для семьи, так и для больших компаний друзей. 
             Наслаждайтесь каждым моментом вашей жизни в приятной обстановке загородного дома."
           </blockquote>
-          <div className="w-16 h-[1px] bg-gold mx-auto mt-8" />
-        </div>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="w-16 h-[1px] bg-gold mx-auto mt-8"
+          />
+        </motion.div>
       </div>
     </section>
   );

@@ -1,6 +1,12 @@
+import { motion } from "framer-motion";
 import { Droplets, Flame, Waves, Sparkles } from "lucide-react";
 import sauna from "@/assets/sauna.jpg";
+import saunaNew from "@/assets/sauna-new.jpg";
 import shower from "@/assets/shower.jpg";
+import jacuzzi from "@/assets/jacuzzi.jpg";
+import basement from "@/assets/basement.jpg";
+import bathroomGold from "@/assets/bathroom-gold.jpg";
+import bathroomSpa from "@/assets/bathroom-spa.jpg";
 
 const Spa = () => {
   const spaFeatures = [
@@ -26,66 +32,118 @@ const Spa = () => {
     },
   ];
 
+  const spaGallery = [
+    { src: saunaNew, alt: "Новая сауна", label: "Сауна" },
+    { src: jacuzzi, alt: "Джакузи", label: "Джакузи" },
+    { src: bathroomGold, alt: "Золотая ванная", label: "Ванная" },
+    { src: bathroomSpa, alt: "СПА ванная", label: "СПА" },
+  ];
+
   return (
-    <section id="spa" className="py-24 bg-charcoal">
+    <section id="spa" className="py-24 md:py-32 bg-charcoal overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="font-montserrat text-sm text-gold tracking-widest uppercase">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-20"
+        >
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, delay: 0.2 }}
+            className="flex items-center justify-center gap-4 mb-6"
+          >
+            <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent to-gold" />
+            <Waves className="w-5 h-5 text-gold" />
+            <div className="w-16 md:w-24 h-px bg-gradient-to-l from-transparent to-gold" />
+          </motion.div>
+          <span className="font-body text-sm text-gold tracking-[0.3em] uppercase">
             Релакс и восстановление
           </span>
-          <h2 className="font-playfair text-3xl md:text-5xl text-cream mt-4 mb-6">
+          <h2 className="font-display text-4xl md:text-6xl text-cream mt-4 mb-6">
             СПА <span className="text-gradient-gold">комплекс</span>
           </h2>
-          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto" />
-        </div>
+        </motion.div>
 
         {/* Main Content */}
         <div className="grid lg:grid-cols-2 gap-12 items-stretch mb-16">
           {/* Images Grid */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="col-span-2">
-              <div className="relative overflow-hidden group">
-                <img
-                  src={sauna}
-                  alt="Сауна"
-                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-                <div className="absolute bottom-4 left-4">
-                  <span className="font-playfair text-xl text-cream">Русская баня</span>
-                </div>
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="grid grid-cols-2 gap-4"
+          >
+            <motion.div 
+              className="col-span-2 relative overflow-hidden group"
+              whileHover={{ scale: 1.02 }}
+            >
+              <img
+                src={sauna}
+                alt="Сауна"
+                className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+              <div className="absolute inset-0 border border-gold/0 group-hover:border-gold/50 transition-colors duration-500" />
+              <div className="absolute bottom-4 left-4">
+                <span className="font-display text-xl text-cream">Русская баня</span>
               </div>
-            </div>
-            <div className="relative overflow-hidden group">
+            </motion.div>
+            
+            <motion.div 
+              className="relative overflow-hidden group"
+              whileHover={{ scale: 1.05 }}
+            >
               <img
                 src={shower}
                 alt="Душ"
-                className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+              <div className="absolute inset-0 border border-gold/0 group-hover:border-gold/50 transition-colors duration-500" />
               <div className="absolute bottom-3 left-3">
-                <span className="font-playfair text-lg text-cream">Душевая</span>
+                <span className="font-display text-lg text-cream">Душевая</span>
               </div>
-            </div>
-            <div className="relative overflow-hidden group bg-card flex items-center justify-center">
-              <div className="text-center p-4">
-                <Waves className="w-12 h-12 text-gold mx-auto mb-3" />
-                <span className="font-playfair text-lg text-cream">Бассейн</span>
+            </motion.div>
+            
+            <motion.div 
+              className="relative overflow-hidden group"
+              whileHover={{ scale: 1.05 }}
+            >
+              <img
+                src={basement}
+                alt="Цокольный этаж"
+                className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+              <div className="absolute inset-0 border border-gold/0 group-hover:border-gold/50 transition-colors duration-500" />
+              <div className="absolute bottom-3 left-3">
+                <span className="font-display text-lg text-cream">Цоколь</span>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Info */}
-          <div className="flex flex-col justify-center">
-            <h3 className="font-playfair text-2xl md:text-3xl text-cream mb-6">
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col justify-center"
+          >
+            <h3 className="font-display text-2xl md:text-3xl text-cream mb-6">
               Цокольный этаж — ваш личный спа-центр
             </h3>
-            <p className="font-montserrat text-muted-foreground leading-relaxed mb-6">
+            <p className="font-body text-muted-foreground leading-relaxed mb-6">
               На цокольном этаже расположен полноценный спа-комплекс: бассейн, турецкий хамам, 
               русская баня, мягкие диваны, домашний кинотеатр, караоке и электрический камин.
             </p>
-            <p className="font-montserrat text-muted-foreground leading-relaxed mb-8">
+            <p className="font-body text-muted-foreground leading-relaxed mb-8">
               Разнообразные травяные заправки и веники на любой выбор придадут вам силы 
               и восстановят организм. Дополнительная оплата.
             </p>
@@ -93,30 +151,74 @@ const Spa = () => {
             {/* SPA Features */}
             <div className="grid grid-cols-2 gap-4">
               {spaFeatures.map((feature, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className="flex items-start gap-3 p-4 border border-border hover:border-gold transition-colors"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ borderColor: "hsl(38 85% 55%)", y: -4 }}
+                  className="flex items-start gap-3 p-4 border border-border transition-all duration-500"
                 >
                   <feature.icon className="w-6 h-6 text-gold flex-shrink-0" />
                   <div>
-                    <h4 className="font-playfair text-cream text-sm mb-1">{feature.title}</h4>
-                    <p className="font-montserrat text-xs text-muted-foreground">
+                    <h4 className="font-display text-cream text-sm mb-1">{feature.title}</h4>
+                    <p className="font-body text-xs text-muted-foreground">
                       {feature.description}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
 
+        {/* SPA Gallery - 4 images */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
+        >
+          {spaGallery.map((image, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ scale: 1.05, zIndex: 10 }}
+              className="relative overflow-hidden group cursor-pointer"
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-40 md:h-48 object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-70" />
+              <div className="absolute inset-0 border border-gold/0 group-hover:border-gold transition-colors duration-500" />
+              <div className="absolute bottom-3 left-3">
+                <span className="font-body text-xs text-gold tracking-[0.2em] uppercase">{image.label}</span>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
         {/* Additional Info Banner */}
-        <div className="bg-card border border-gold/30 p-8 text-center">
-          <p className="font-montserrat text-cream/80">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          whileHover={{ borderColor: "hsl(38 85% 55%)" }}
+          className="bg-card border border-gold/30 p-8 text-center transition-colors duration-500"
+        >
+          <p className="font-body text-cream/80">
             <span className="text-gold">✨</span> Кальянная с авторскими миксами доступна за дополнительную плату{" "}
             <span className="text-gold">✨</span>
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import {
   CheckCircle,
   XCircle,
@@ -5,7 +6,10 @@ import {
   Clock,
   Wallet,
   PawPrint,
+  Sparkles,
 } from "lucide-react";
+import facadeFront from "@/assets/facade-front.jpg";
+import facadeBack from "@/assets/facade-back.jpg";
 
 const Rules = () => {
   const required = [
@@ -22,97 +26,202 @@ const Rules = () => {
     "Запрещено проведение шумных вечеринок (музыка до 21:00 на улице)",
   ];
 
+  const infoCards = [
+    {
+      icon: Wallet,
+      title: "Залог",
+      description: "Залог равен суткам проживания. Возвращается в течение 24 часов после выезда при условии соблюдения правил и сохранности имущества.",
+    },
+    {
+      icon: Clock,
+      title: "Заезд и выезд",
+      description: "Ранний заезд и поздний выезд оговаривается и оплачивается дополнительно. Уборка в стоимость не входит.",
+    },
+    {
+      icon: PawPrint,
+      title: "С животными",
+      description: "При заселении с животными условия обговариваются отдельно. Свяжитесь с нами для уточнения деталей.",
+    },
+  ];
+
   return (
-    <section id="rules" className="py-24 bg-background">
+    <section id="rules" className="py-24 md:py-32 bg-background overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="font-montserrat text-sm text-gold tracking-widest uppercase">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-20"
+        >
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, delay: 0.2 }}
+            className="flex items-center justify-center gap-4 mb-6"
+          >
+            <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent to-gold" />
+            <Sparkles className="w-5 h-5 text-gold" />
+            <div className="w-16 md:w-24 h-px bg-gradient-to-l from-transparent to-gold" />
+          </motion.div>
+          <span className="font-body text-sm text-gold tracking-[0.3em] uppercase">
             Важная информация
           </span>
-          <h2 className="font-playfair text-3xl md:text-5xl text-cream mt-4 mb-6">
+          <h2 className="font-display text-4xl md:text-6xl text-cream mt-4 mb-6">
             Правила <span className="text-gradient-gold">проживания</span>
           </h2>
-          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto" />
-        </div>
+        </motion.div>
+
+        {/* Image Gallery - 2 images */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="grid grid-cols-2 gap-4 mb-16"
+        >
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            className="relative overflow-hidden group"
+          >
+            <img
+              src={facadeFront}
+              alt="Фасад спереди"
+              className="w-full h-48 md:h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-60" />
+            <div className="absolute inset-0 border border-gold/0 group-hover:border-gold/50 transition-colors duration-500" />
+          </motion.div>
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            className="relative overflow-hidden group"
+          >
+            <img
+              src={facadeBack}
+              alt="Фасад сзади"
+              className="w-full h-48 md:h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-60" />
+            <div className="absolute inset-0 border border-gold/0 group-hover:border-gold/50 transition-colors duration-500" />
+          </motion.div>
+        </motion.div>
 
         {/* Age restriction banner */}
-        <div className="mb-12 p-6 bg-gold/10 border border-gold flex items-center justify-center gap-4">
-          <AlertTriangle className="w-6 h-6 text-gold flex-shrink-0" />
-          <p className="font-montserrat text-cream text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          whileHover={{ borderColor: "hsl(38 85% 55%)" }}
+          className="mb-16 p-8 bg-gold/5 border-2 border-gold flex items-center justify-center gap-4 transition-colors duration-500"
+        >
+          <motion.div
+            animate={{ rotate: [0, 10, -10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <AlertTriangle className="w-8 h-8 text-gold flex-shrink-0" />
+          </motion.div>
+          <p className="font-body text-cream text-center text-lg">
             <span className="font-semibold">Строгое ограничение по возрасту:</span> Гости не младше 25 лет
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
           {/* Required */}
-          <div className="p-6 bg-card border border-border">
-            <div className="flex items-center gap-3 mb-6">
-              <CheckCircle className="w-6 h-6 text-green-500" />
-              <h3 className="font-playfair text-xl text-cream">Обязательно</h3>
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            whileHover={{ borderColor: "hsl(142 76% 36% / 0.5)" }}
+            className="p-8 bg-card border border-border transition-colors duration-500"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <CheckCircle className="w-8 h-8 text-green-500" />
+              <h3 className="font-display text-2xl text-cream">Обязательно</h3>
             </div>
-            <ul className="space-y-4">
+            <ul className="space-y-5">
               {required.map((rule, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <span className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0" />
-                  <span className="font-montserrat text-sm text-muted-foreground">
+                <motion.li
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="flex items-start gap-4"
+                >
+                  <span className="w-2 h-2 bg-green-500 rounded-full mt-2.5 flex-shrink-0" />
+                  <span className="font-body text-muted-foreground leading-relaxed">
                     {rule}
                   </span>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Prohibited */}
-          <div className="p-6 bg-card border border-border">
-            <div className="flex items-center gap-3 mb-6">
-              <XCircle className="w-6 h-6 text-red-500" />
-              <h3 className="font-playfair text-xl text-cream">Запрещено</h3>
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            whileHover={{ borderColor: "hsl(0 84% 60% / 0.5)" }}
+            className="p-8 bg-card border border-border transition-colors duration-500"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <XCircle className="w-8 h-8 text-red-500" />
+              <h3 className="font-display text-2xl text-cream">Запрещено</h3>
             </div>
-            <ul className="space-y-4">
+            <ul className="space-y-5">
               {prohibited.map((rule, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <span className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0" />
-                  <span className="font-montserrat text-sm text-muted-foreground">
+                <motion.li
+                  key={index}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="flex items-start gap-4"
+                >
+                  <span className="w-2 h-2 bg-red-500 rounded-full mt-2.5 flex-shrink-0" />
+                  <span className="font-body text-muted-foreground leading-relaxed">
                     {rule}
                   </span>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         </div>
 
         {/* Additional Info Cards */}
         <div className="grid md:grid-cols-3 gap-6">
-          {/* Deposit */}
-          <div className="p-6 bg-card border border-gold/30 hover:border-gold transition-colors">
-            <Wallet className="w-8 h-8 text-gold mb-4" />
-            <h4 className="font-playfair text-lg text-cream mb-2">Залог</h4>
-            <p className="font-montserrat text-sm text-muted-foreground">
-              Залог равен суткам проживания. Возвращается в течение 24 часов после выезда 
-              при условии соблюдения правил и сохранности имущества.
-            </p>
-          </div>
-
-          {/* Check-in/out */}
-          <div className="p-6 bg-card border border-gold/30 hover:border-gold transition-colors">
-            <Clock className="w-8 h-8 text-gold mb-4" />
-            <h4 className="font-playfair text-lg text-cream mb-2">Заезд и выезд</h4>
-            <p className="font-montserrat text-sm text-muted-foreground">
-              Ранний заезд и поздний выезд оговаривается и оплачивается дополнительно. 
-              Уборка в стоимость не входит.
-            </p>
-          </div>
-
-          {/* Pets */}
-          <div className="p-6 bg-card border border-gold/30 hover:border-gold transition-colors">
-            <PawPrint className="w-8 h-8 text-gold mb-4" />
-            <h4 className="font-playfair text-lg text-cream mb-2">С животными</h4>
-            <p className="font-montserrat text-sm text-muted-foreground">
-              При заселении с животными условия обговариваются отдельно. 
-              Свяжитесь с нами для уточнения деталей.
-            </p>
-          </div>
+          {infoCards.map((card, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              whileHover={{ 
+                borderColor: "hsl(38 85% 55%)", 
+                y: -8,
+                boxShadow: "0 20px 40px -20px hsl(38 85% 55% / 0.3)"
+              }}
+              className="p-8 bg-card border border-gold/30 transition-all duration-500"
+            >
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <card.icon className="w-10 h-10 text-gold mb-5" />
+              </motion.div>
+              <h4 className="font-display text-xl text-cream mb-3">{card.title}</h4>
+              <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                {card.description}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

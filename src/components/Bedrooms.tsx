@@ -1,136 +1,265 @@
-import { Bed, DoorOpen, Bath, Eye } from "lucide-react";
+import { motion } from "framer-motion";
+import { Bed, DoorOpen, Bath, Eye, Sparkles } from "lucide-react";
+import masterBedroom from "@/assets/master-bedroom.jpg";
+import bedroomVelvet from "@/assets/bedroom-velvet.jpg";
+import bedroomBalcony from "@/assets/bedroom-balcony.jpg";
+import bedroomArched from "@/assets/bedroom-arched.jpg";
 import bedroomBlue from "@/assets/bedroom-blue.jpg";
 import bedroomTwin from "@/assets/bedroom-twin.jpg";
 import bedroomMultiple from "@/assets/bedroom-multiple.jpg";
+import bathroomGold from "@/assets/bathroom-gold.jpg";
+import bathroomSpa from "@/assets/bathroom-spa.jpg";
+import jacuzzi from "@/assets/jacuzzi.jpg";
 
 const Bedrooms = () => {
   const bedrooms = [
     {
-      image: bedroomBlue,
+      image: masterBedroom,
       title: "Мастер-спальня",
       description: "С джакузи и выходом на балкон",
-      features: ["Джакузи", "Балкон", "King-size кровать"],
+      features: ["Джакузи", "Балкон", "King-size"],
+    },
+    {
+      image: bedroomVelvet,
+      title: "Бархатная спальня",
+      description: "Роскошный интерьер с бархатной отделкой",
+      features: ["Балкон", "Премиум", "King-size"],
+    },
+    {
+      image: bedroomBalcony,
+      title: "Спальня с террасой",
+      description: "Панорамный вид на лес",
+      features: ["Терраса", "Вид на лес", "King-size"],
+    },
+    {
+      image: bedroomArched,
+      title: "Арочная спальня",
+      description: "Уникальный дизайн с арочными окнами",
+      features: ["Арочные окна", "Свет", "Queen-size"],
+    },
+    {
+      image: bedroomBlue,
+      title: "Голубая спальня",
+      description: "Спокойные тона для отдыха",
+      features: ["Уютная", "2 кровати", "Балкон"],
     },
     {
       image: bedroomTwin,
       title: "Двухместная спальня",
-      description: "Две раздельные кровати с видом на лес",
-      features: ["Балкон", "Вид на лес", "2 кровати"],
+      description: "Две раздельные кровати",
+      features: ["2 кровати", "Просторная", "Балкон"],
     },
-    {
-      image: bedroomMultiple,
-      title: "Большая комната",
-      description: "До 6 спальных мест для компании",
-      features: ["6 кроватей", "Просторная", "Современный дизайн"],
-    },
+  ];
+
+  const bathroomGallery = [
+    { src: bathroomGold, alt: "Золотая ванная", label: "Золотая ванная" },
+    { src: bathroomSpa, alt: "СПА ванная", label: "СПА ванная" },
+    { src: jacuzzi, alt: "Джакузи", label: "Джакузи" },
+    { src: bedroomMultiple, alt: "Дополнительная спальня", label: "Спальня" },
   ];
 
   const floorInfo = [
     {
       floor: "Цокольный этаж",
+      icon: Bath,
       items: ["СПА-комплекс", "Бассейн", "Хамам", "Баня", "Кинотеатр", "Караоке"],
     },
     {
       floor: "1 этаж",
+      icon: DoorOpen,
       items: ["Банкетный зал 100+ м²", "Кухня с панорамным видом", "Круглый большой стол"],
     },
     {
       floor: "2 этаж",
+      icon: Bed,
       items: ["6 спален", "4 балкона", "Мастер-спальня с джакузи", "20 спальных мест"],
     },
   ];
 
   return (
-    <section id="bedrooms" className="py-24 bg-charcoal">
+    <section id="bedrooms" className="py-24 md:py-32 bg-charcoal overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="font-montserrat text-sm text-gold tracking-widest uppercase">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-20"
+        >
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, delay: 0.2 }}
+            className="flex items-center justify-center gap-4 mb-6"
+          >
+            <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent to-gold" />
+            <Bed className="w-5 h-5 text-gold" />
+            <div className="w-16 md:w-24 h-px bg-gradient-to-l from-transparent to-gold" />
+          </motion.div>
+          <span className="font-body text-sm text-gold tracking-[0.3em] uppercase">
             20 спальных мест
           </span>
-          <h2 className="font-playfair text-3xl md:text-5xl text-cream mt-4 mb-6">
+          <h2 className="font-display text-4xl md:text-6xl text-cream mt-4 mb-6">
             Спальни и <span className="text-gradient-gold">этажи</span>
           </h2>
-          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto" />
-        </div>
+        </motion.div>
 
-        {/* Bedrooms Gallery */}
-        <div className="grid md:grid-cols-3 gap-6 mb-20">
+        {/* Bedrooms Gallery - 6 bedrooms grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {bedrooms.map((bedroom, index) => (
-            <div key={index} className="group">
-              <div className="relative overflow-hidden mb-4">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group"
+            >
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="relative overflow-hidden mb-4"
+              >
                 <img
                   src={bedroom.image}
                   alt={bedroom.title}
-                  className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60" />
-                <div className="absolute inset-0 border border-gold/0 group-hover:border-gold/50 transition-colors" />
-              </div>
-              <h3 className="font-playfair text-xl text-cream mb-2">{bedroom.title}</h3>
-              <p className="font-montserrat text-sm text-muted-foreground mb-3">
+                <div className="absolute inset-0 bg-gradient-to-t from-obsidian to-transparent opacity-60" />
+                <div className="absolute inset-0 border border-gold/0 group-hover:border-gold/50 transition-colors duration-500" />
+                
+                {/* Hover overlay */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  className="absolute inset-0 bg-gold/10 flex items-center justify-center"
+                >
+                  <Sparkles className="w-10 h-10 text-gold" />
+                </motion.div>
+              </motion.div>
+              <h3 className="font-display text-xl text-cream mb-2">{bedroom.title}</h3>
+              <p className="font-body text-sm text-muted-foreground mb-4">
                 {bedroom.description}
               </p>
               <div className="flex flex-wrap gap-2">
                 {bedroom.features.map((feature, idx) => (
                   <span
                     key={idx}
-                    className="px-3 py-1 text-xs font-montserrat text-gold border border-gold/30 uppercase tracking-wider"
+                    className="px-3 py-1 text-xs font-body text-gold border border-gold/30 uppercase tracking-wider hover:bg-gold/10 transition-colors"
                   >
                     {feature}
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
+        {/* Bathroom Gallery - 4 images */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-16"
+        >
+          <h3 className="font-display text-2xl text-cream text-center mb-8">
+            Ванные комнаты и <span className="text-gradient-gold">удобства</span>
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {bathroomGallery.map((image, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05, zIndex: 10 }}
+                className="relative overflow-hidden group cursor-pointer"
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-40 md:h-48 object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-70" />
+                <div className="absolute inset-0 border border-gold/0 group-hover:border-gold transition-colors duration-500" />
+                <div className="absolute bottom-3 left-3">
+                  <span className="font-body text-xs text-gold tracking-[0.15em] uppercase">{image.label}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
         {/* Floor Plan Info */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
           {floorInfo.map((floor, index) => (
-            <div
+            <motion.div
               key={index}
-              className="p-6 bg-card border border-border hover:border-gold transition-colors"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              whileHover={{ borderColor: "hsl(38 85% 55%)", y: -4 }}
+              className="p-8 bg-card border border-border transition-all duration-500"
             >
-              <div className="flex items-center gap-3 mb-4">
-                {index === 0 && <Bath className="w-6 h-6 text-gold" />}
-                {index === 1 && <DoorOpen className="w-6 h-6 text-gold" />}
-                {index === 2 && <Bed className="w-6 h-6 text-gold" />}
-                <h4 className="font-playfair text-lg text-cream">{floor.floor}</h4>
+              <div className="flex items-center gap-4 mb-6">
+                <floor.icon className="w-8 h-8 text-gold" />
+                <h4 className="font-display text-xl text-cream">{floor.floor}</h4>
               </div>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {floor.items.map((item, idx) => (
-                  <li
+                  <motion.li
                     key={idx}
-                    className="font-montserrat text-sm text-muted-foreground flex items-center gap-2"
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5 + idx * 0.1 }}
+                    className="font-body text-sm text-muted-foreground flex items-center gap-3"
                   >
-                    <span className="w-1 h-1 bg-gold rounded-full" />
+                    <span className="w-1.5 h-1.5 bg-gold rounded-full" />
                     {item}
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* View highlight */}
-        <div className="mt-16 p-8 border border-gold/30 bg-card/50 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <Eye className="w-8 h-8 text-gold" />
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          whileHover={{ borderColor: "hsl(38 85% 55%)" }}
+          className="p-10 border border-gold/30 bg-card/50 flex flex-col md:flex-row items-center justify-between gap-8 transition-colors duration-500"
+        >
+          <div className="flex items-center gap-6">
+            <motion.div
+              animate={{ rotate: [0, 10, -10, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Eye className="w-12 h-12 text-gold" />
+            </motion.div>
             <div>
-              <h4 className="font-playfair text-xl text-cream">Панорамный вид на лес</h4>
-              <p className="font-montserrat text-sm text-muted-foreground">
+              <h4 className="font-display text-2xl text-cream">Панорамный вид на лес</h4>
+              <p className="font-body text-muted-foreground mt-1">
                 Дом на возвышенности — самый красивый вид в посёлке!
               </p>
             </div>
           </div>
-          <a
+          <motion.a
             href="#contact"
-            className="font-montserrat text-sm px-6 py-3 bg-gold text-background tracking-wider uppercase hover:bg-gold-light transition-colors"
+            whileHover={{ scale: 1.05, boxShadow: "0 0 30px hsl(38 85% 55% / 0.4)" }}
+            whileTap={{ scale: 0.95 }}
+            className="font-body text-sm px-8 py-4 bg-gold text-obsidian tracking-[0.15em] uppercase transition-all duration-500"
           >
             Забронировать
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );
