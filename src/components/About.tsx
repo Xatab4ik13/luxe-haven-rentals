@@ -3,11 +3,7 @@ import { Film, Home, Users, MapPin, Sparkles } from "lucide-react";
 import dvoretsEvening from "@/assets/dvorets-evening.jpg";
 import dvoretsWinter from "@/assets/dvorets-winter.jpg";
 import dvoretsFront from "@/assets/dvorets-front.jpg";
-import hallMain from "@/assets/hall-main.jpg";
-import hallMarble from "@/assets/hall-marble.jpg";
-import kitchen from "@/assets/kitchen.jpg";
-import livingArea from "@/assets/living-area.jpg";
-import livingRoom from "@/assets/living-room.jpg";
+import VideoPlayer from "@/components/VideoPlayer";
 
 const About = () => {
   const features = [
@@ -143,10 +139,19 @@ const About = () => {
               Ранее не сдавался. Он известен в кино-индустрии: многие сериалы и кино-картины 
               снимались именно в этом доме.
             </p>
-            <p className="font-body text-muted-foreground leading-relaxed mb-10">
+            <p className="font-body text-muted-foreground leading-relaxed mb-8">
               Проведя отдых у нас — вы не пожалеете и будете желать вернуться и повторить! 
               Дом полностью оборудован для проживания: чистое постельное бельё, полотенца, посуда.
             </p>
+
+            {/* Video Player */}
+            <div className="mb-10">
+              <VideoPlayer
+                thumbnailUrl={`https://img.youtube.com/vi/mIs1tnp8vYc/maxresdefault.jpg`}
+                videoId="mIs1tnp8vYc"
+                title="Видео-тур по дворцу"
+              />
+            </div>
 
             {/* Stats */}
             <motion.div 
