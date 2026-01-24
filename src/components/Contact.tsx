@@ -106,7 +106,7 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           whileHover={{ borderColor: "hsl(38 85% 55%)" }}
-          className="text-center p-12 bg-card border-2 border-gold transition-colors duration-500"
+          className="text-center p-6 md:p-12 bg-card border-2 border-gold transition-colors duration-500 flex flex-col items-center"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
