@@ -63,7 +63,7 @@ const Bedrooms = () => {
     {
       floor: "2 этаж",
       icon: Bed,
-      items: ["6 спален", "4 балкона", "Мастер-спальня с джакузи", "20 спальных мест"],
+      items: ["7 спален", "4 балкона", "Мастер-спальня с джакузи"],
     },
   ];
 
@@ -90,7 +90,7 @@ const Bedrooms = () => {
             <div className="w-16 md:w-24 h-px bg-gradient-to-l from-transparent to-gold" />
           </motion.div>
           <span className="font-body text-sm text-gold tracking-[0.3em] uppercase">
-            20 спальных мест
+            7 спален
           </span>
           <h2 className="font-display text-4xl md:text-6xl text-cream mt-4 mb-6">
             Спальни и <span className="text-gradient-gold">этажи</span>

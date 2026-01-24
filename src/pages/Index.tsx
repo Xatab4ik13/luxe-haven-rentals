@@ -3,6 +3,7 @@ import Preloader from "@/components/Preloader";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import Gallery from "@/components/Gallery";
 import Spa from "@/components/Spa";
 import Amenities from "@/components/Amenities";
 import Bedrooms from "@/components/Bedrooms";
@@ -44,6 +45,7 @@ const Index = () => {
         <main>
           <Hero />
           <About />
+          <Gallery />
           <Spa />
           <Amenities />
           <Bedrooms />

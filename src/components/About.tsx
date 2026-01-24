@@ -19,11 +19,11 @@ const About = () => {
     {
       icon: Home,
       title: "3 этажа роскоши",
-      description: "Цокольный СПА-комплекс, банкетный зал на 1 этаже и 6 спален на 2 этаже.",
+      description: "Цокольный СПА-комплекс, банкетный зал на 1 этаже и 7 спален на 2 этаже.",
     },
     {
       icon: Users,
-      title: "До 50 гостей",
+      title: "До 80 гостей",
       description: "Идеально для любых мероприятий: свадьбы, корпоративы, дни рождения, семейный отдых.",
     },
     {
@@ -157,9 +157,9 @@ const About = () => {
               className="grid grid-cols-3 gap-6"
             >
               {[
-                { value: "6", label: "Спален" },
-                { value: "50", label: "Гостей" },
-                { value: "8", label: "Машин" },
+                { value: "7", label: "Спален" },
+                { value: "80", label: "Гостей" },
+                { value: "15", label: "Машин" },
               ].map((stat, index) => (
                 <div
                   key={index}
@@ -176,32 +176,6 @@ const About = () => {
         </div>
 
 
-        {/* Banquet Hall Image */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-          className="relative mb-24"
-        >
-          <div className="relative overflow-hidden">
-            <motion.img
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-              src={hallMain}
-              alt="Банкетный зал"
-              className="w-full h-[400px] object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-            <div className="absolute inset-0 border border-gold/20" />
-          </div>
-          <div className="absolute bottom-8 left-8 right-8 md:left-12">
-            <span className="font-body text-xs text-gold tracking-[0.3em] uppercase">Банкетный зал</span>
-            <h3 className="font-display text-2xl md:text-3xl text-cream mt-2">
-              Более 100 м² для ваших мероприятий
-            </h3>
-          </div>
-        </motion.div>
 
         {/* Features Grid */}
         <motion.div 

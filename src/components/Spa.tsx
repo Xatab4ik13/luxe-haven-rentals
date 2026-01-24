@@ -8,6 +8,7 @@ import jacuzzi from "@/assets/jacuzzi.jpg";
 import basement from "@/assets/basement.jpg";
 import bathroomGold from "@/assets/bathroom-gold.jpg";
 import bathroomSpa from "@/assets/bathroom-spa.jpg";
+import pool from "@/assets/pool.jpg";
 
 const Spa = () => {
   const isHoverCapable = useHoverCapable();
@@ -80,14 +81,30 @@ const Spa = () => {
               whileHover={isHoverCapable ? { scale: 1.02 } : undefined}
             >
               <img
-                src={sauna}
-                alt="Сауна"
+                src={pool}
+                alt="Бассейн"
                 className={`w-full h-64 object-cover transition-transform duration-700 ease-out ${isHoverCapable ? "group-hover:scale-105" : ""}`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
               <div className={`absolute inset-0 border transition-colors duration-500 ${isHoverCapable ? "border-gold/0 group-hover:border-gold/50" : "border-gold/0"}`} />
               <div className="absolute bottom-4 left-4">
-                <span className="font-display text-xl text-cream">Русская баня</span>
+                <span className="font-display text-xl text-cream">Бассейн</span>
+              </div>
+            </motion.div>
+            
+            <motion.div 
+              className="relative overflow-hidden group"
+              whileHover={isHoverCapable ? { scale: 1.05 } : undefined}
+            >
+              <img
+                src={sauna}
+                alt="Сауна"
+                className={`w-full h-48 object-cover transition-transform duration-700 ease-out ${isHoverCapable ? "group-hover:scale-105" : ""}`}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+              <div className={`absolute inset-0 border transition-colors duration-500 ${isHoverCapable ? "border-gold/0 group-hover:border-gold/50" : "border-gold/0"}`} />
+              <div className="absolute bottom-3 left-3">
+                <span className="font-display text-lg text-cream">Русская баня</span>
               </div>
             </motion.div>
             
@@ -97,29 +114,13 @@ const Spa = () => {
             >
               <img
                 src={shower}
-                alt="Душ"
+                alt="Душевая"
                 className={`w-full h-48 object-cover transition-transform duration-700 ease-out ${isHoverCapable ? "group-hover:scale-105" : ""}`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
               <div className={`absolute inset-0 border transition-colors duration-500 ${isHoverCapable ? "border-gold/0 group-hover:border-gold/50" : "border-gold/0"}`} />
               <div className="absolute bottom-3 left-3">
                 <span className="font-display text-lg text-cream">Душевая</span>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              className="relative overflow-hidden group"
-              whileHover={isHoverCapable ? { scale: 1.05 } : undefined}
-            >
-              <img
-                src={basement}
-                alt="Цокольный этаж"
-                className={`w-full h-48 object-cover transition-transform duration-700 ease-out ${isHoverCapable ? "group-hover:scale-105" : ""}`}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-              <div className={`absolute inset-0 border transition-colors duration-500 ${isHoverCapable ? "border-gold/0 group-hover:border-gold/50" : "border-gold/0"}`} />
-              <div className="absolute bottom-3 left-3">
-                <span className="font-display text-lg text-cream">Цоколь</span>
               </div>
             </motion.div>
           </motion.div>
