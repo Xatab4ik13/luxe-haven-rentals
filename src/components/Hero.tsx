@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ChevronDown, MapPin, Users, Star, Sparkles } from "lucide-react";
-import dvoretsEvening from "@/assets/dvorets-evening.jpg";
+import dvoretsEvening from "@/assets/dvorets-evening-hd.jpg";
 import { useHoverCapable } from "@/hooks/use-hover-capable";
 const Hero = () => {
   const isHoverCapable = useHoverCapable();
