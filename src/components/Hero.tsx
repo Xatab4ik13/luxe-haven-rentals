@@ -19,8 +19,8 @@ const Hero = () => {
           alt="Dvorets Dzzotti"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/50 via-obsidian/30 to-obsidian" />
-        <div className="absolute inset-0 bg-gradient-to-r from-obsidian/40 via-transparent to-obsidian/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/60 via-obsidian/50 to-obsidian" />
+        <div className="absolute inset-0 bg-gradient-to-r from-obsidian/50 via-obsidian/20 to-obsidian/50" />
       </motion.div>
 
       {/* Animated overlay patterns */}
