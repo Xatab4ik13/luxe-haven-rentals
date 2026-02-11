@@ -147,8 +147,8 @@ const About = () => {
             {/* Video Player */}
             <div className="mb-10">
               <VideoPlayer
-                thumbnailUrl={`https://img.youtube.com/vi/mIs1tnp8vYc/maxresdefault.jpg`}
-                videoId="mIs1tnp8vYc"
+                thumbnailUrl={`https://img.youtube.com/vi/nuPUflnQmns/maxresdefault.jpg`}
+                videoId="nuPUflnQmns"
                 title="Видео-тур по дворцу"
               />
             </div>
