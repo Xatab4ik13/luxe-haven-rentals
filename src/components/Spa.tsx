@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Droplets, Flame, Waves, Sparkles } from "lucide-react";
 import { useHoverCapable } from "@/hooks/use-hover-capable";
 import spaPool from "@/assets/spa-pool-new.jpg";
-import spaJacuzzi from "@/assets/spa-pool-new.jpg";
+import spaJacuzzi from "@/assets/jacuzzi.jpg";
 import spaBanya from "@/assets/spa-banya-new.jpg";
 import spaHamam from "@/assets/spa-hamam-new.jpg";
 
